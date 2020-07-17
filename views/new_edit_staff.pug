@@ -1,0 +1,63 @@
+extends layout
+block content
+    //-  Main container
+    div.container-fluid
+        div.row
+            div.d-none.col-lg-2.d-lg-block#admin-list
+
+                include include/staff_sidebar 
+
+            div.col-md-12.col-lg-10
+                div.row
+                    div.col-md-8.offset-md-2
+                        //- Client registration form
+                        //- Handle scroll with css of this section
+                        form.my-4.register(action="/staff/new" method="POST")
+                            h3.text-center Agent Registration Form
+                            //- Personal data
+                            input(type="hidden")
+                            fieldset.client-register-detail.mb-2
+                                //- legend Personal Data
+                                div.form-row
+                                    div.form-group.col-md-6
+                                        label(for="fname") First Name
+                                        input.form-control#fname(type="text" name="fname")
+                                    div.form-group.col-md-6
+                                        label(for="lname") Last Name
+                                        input.form-control#make(type="text" name="lname")
+                                div.form-row
+                                    div.form-group.col-md-6
+                                        label(for="username") Username
+                                        input.form-control#username(type="text" name="username")
+                                    div.form-group.col-md-6
+                                        label(for="email") Email
+                                        input.form-control#email(type="text" name="email")
+                
+                            fieldset.client-register-detail.mb-2
+                                //- legend Product Data
+                                div.form-row
+                                    div.form-group.col-md-6
+                                        label(for="eid") Employee ID
+                                        input(type="text").form-control#eid
+                                    div.form-group.col-md-6
+                                        label(for="nid") National ID
+                                        input(type="text").form-control#nid       
+                                div.form-row
+                                    div.form-group.col-md-6
+                                        label(for="password") Create a Password
+                                        input.form-control#password(type="text" name="password")
+                                    div.form-group.col-md-6
+                                        label(for="c_password") Confirm Password
+                                        input.form-control#c_password(type="text")                                
+
+                            button(type="submit").btn.btn-block Create Agent
+                            
+                            //- End Sales Registration form 
+                
+
+    //- End main container 
+
+    
+        
+    
+        

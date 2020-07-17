@@ -11,6 +11,7 @@ const app = express();
 //configurations
 app.set('view engine', 'pug'); //Using pug engine
 app.set('views', './views');
+const DB = require('./config/db');
 
 //middlewares
 app.use(express.static(path.join(__dirname , 'public'))); //Using static files
