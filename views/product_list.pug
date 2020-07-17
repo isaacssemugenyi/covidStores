@@ -1,0 +1,40 @@
+extends layout
+block content
+  //-  Main container
+  div.container-fluid
+    div.row
+      div.d-none.col-lg-2.d-lg-block#admin-list
+
+        include include/staff_sidebar 
+
+      div.col-md-12.col-lg-10
+        //- Products table
+        table.table.table-hover.table-bordered.table-sm#product-table
+          thead.thead.covid-table.text-primary
+            tr
+              th(scope="col") Product
+              th(scope="col") Category
+              th(scope="col") Price
+              th(scope="col") By
+              th(scope="col") Created
+              th(scope="col") Edit
+              th(scope="col") Delete
+          
+          tbody
+            //- Products
+            tr
+              td Television
+              td Electronics
+              td Ugx. 300,000
+              td Isaac Tom
+              td 2020/07/02
+              td
+                a(href="#" role="button").btn.btn-warning.py-1.px-2
+                  i.icon-pencil.fa-lg
+              td
+                a(href="#" role="button").btn.btn-danger.py-1.px-2
+                  i.icon-trash.fa-lg
+            //- End Products
+          //- End products table
+    
+        

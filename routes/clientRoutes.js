@@ -1,9 +1,9 @@
 const express  = require('express');
 const router = express.Router();
 
-// Login route
-router.get('/login', (req, res)=>{
-    res.render('staff_login')
+// Default route
+router.get('/register', (req, res)=>{
+    res.render('client_registration')
 })
 
 module.exports = router

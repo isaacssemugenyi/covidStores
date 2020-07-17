@@ -1,40 +1,90 @@
 extends layout
 block content
-  //-  Main container
-  div.container-fluid
-    div.row
-      div.d-none.col-lg-2.d-lg-block#admin-list
+    //-  Main container
+    div.container-fluid
+        div.row
+            div.d-none.col-lg-2.d-lg-block#admin-list
 
-        include include/staff_sidebar 
+                include include/staff_sidebar 
 
-      div.col-md-12.col-lg-10
-        //- Products table
-        table.table.table-hover.table-bordered.table-sm#product-table
-          thead.thead.covid-table.text-primary
-            tr
-              th(scope="col") Product
-              th(scope="col") Category
-              th(scope="col") Price
-              th(scope="col") By
-              th(scope="col") Created
-              th(scope="col") Edit
-              th(scope="col") Delete
-          
-          tbody
-            //- Products
-            tr
-              td Television
-              td Electronics
-              td Ugx. 300,000
-              td Isaac Tom
-              td 2020/07/02
-              td
-                a(href="#" role="button").btn.btn-warning.py-1.px-2
-                  i.icon-pencil.fa-lg
-              td
-                a(href="#" role="button").btn.btn-danger.py-1.px-2
-                  i.icon-trash.fa-lg
-            //- End Products
-          //- End products table
+            div.col-md-12.col-lg-10
+                div.row
+                    div.col-md-8.offset-md-2
+                        //- Client registration form
+                        //- Handle scroll with css of this section
+                        form.my-4.register
+                            h3.text-center Client Registration/ Purchase Form
+                            //- Personal data
+                            input(type="hidden")
+                            fieldset.client-register-detail.mb-2
+                                //- legend Personal Data
+                                div.form-row
+                                    div.form-group.col-md-4
+                                        label(for="pdt-name") Product Name
+                                        input.form-control#pdt-name(type="text" name="pdt_name")
+                                    div.form-group.col-md-4
+                                        label(for="make") Make
+                                        input.form-control#make(type="text" name="make" maximum="2")
+                                    div.form-group.col-md-4
+                                        label(for="entry_daye") Date of Entry
+                                        input.form-control#entry_date(type="date" name="entry_date")
+
+                                div.form-row
+                                    div.form-group.col-md-4
+                                        label(for="category") Category
+                                        select.form-control#category(name="pdt_ctegory")
+                                            option(value="" selected disabled) Select category
+                                            option(value="furniture") Furniture
+                                            option(value="electronics") Electronics
+                                            option(value="fitness") Fitness
+                                            option(value="machinery") Machinery
+                                            option(value="other") Others
+                                    div.form-group.col-md-4
+                                        label(for="serial_no") Serial Number
+                                        input.form-control#serial_no(type="text" name="serial_no")
+                                    div.form-group.col-md-4
+                                        label(for="pdt_color") Product Color
+                                        input.form-control#pdt_color(type="text" name="pdt_color")
+                                        
+                            fieldset.client-register-detail.mb-2
+                                //- legend Product Data
+                                div.form-row
+                                    div.form-group.col-md-4
+                                        label(for="pdt_price") Product Price
+                                        input(type="number").form-control#pdt_price
+                                    div.form-group.col-md-4
+                                        label(for="initial_pay") Initial Pay
+                                        input(type="number").form-control#initial_pay
+                                    div.form-group.col-md-4
+                                        label(for="pay_interval") Payment Interval
+                                        select.form-control#pay_interval(name="pdt_interval")
+                                            option(value="" selected disabled) Select payment interval
+                                            option(value="weekly") Weekly
+                                            option(value="bi-weekly") Bi-Weekly
+                                            option(value="monthly") Monthly
+                                            option(value="quartery") Quartery
+                                        
+                                div.form-row
+                                    div.form-group.col-md-3
+                                        label(for="pdt_stock") Number in stock
+                                        input.form-control#pdt_stock(type="number" name="pdt_stock")
+                                    div.form-group.col-md-8
+                                        label(for="pdt_image") Select Image
+                                        input.form-control#pdt_image(type="file" name="pdt_image")
+                                div.form-row
+                                    div.form-group.col-md-12
+                                        label(for="pdt_desc") Describe the product
+                                        textarea#pdt_desc(name="", cols="10", rows="2").form-control
+                                
+
+                            button(type="submit").btn.btn-block Create a product
+                            
+                            //- End product registration form 
+                
+
+    //- End main container 
+
+    
+        
     
         
