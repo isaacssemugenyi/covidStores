@@ -1,83 +1,91 @@
 extends layout
-block content
-    //  Main container 
-    .container-fluid
-        .row
-            .d-none.col-lg-2.d-lg-block#admin-list
+block content  
+    //-  Main container 
+    div.container-fluid
+        div.row
+            //- Side bar
+            div.d-none.col-lg-2.d-lg-block#admin-list
                 ul
                     li.py-2
                         a.pl-1.py-2(href="/") New Agent
                     li.py-2
-                        a.pl-1.py-2(href="/") Agent's List
+                        a.pl-1.py-2(href="/") Agents' List
                     li.py-2
                         a.pl-1.py-2(href="/") New Product
                     li.py-2
                         a.pl-1.py-2(href="/") Product List
                     li.py-2
-                        a.pl-1.py-2(href="/client-register") Create a new client
-            .col-md-12.col-lg-10
-                .row
-                    .col-md-8.offset-md-2
-                        //  Client registration form 
-                        //  Handle scroll with css of this section 
+                        a.pl-1.py-2(href="/") Create a new client
+            //- End sidebar
+            div.col-md-12.col-lg-10
+                div.row
+                    div.col-md-8.offset-md-2
+                        //- Client registration form
+                        //- Handle scroll with css of this section
                         form.my-4.register
                             h3.text-center Client Registration/ Purchase Form
-                            //  Personal data 
+                            //- Personal data
                             fieldset.client-register-detail.mb-2
                                 legend Personal Data
-                                .form-row
-                                    .form-group.col-md-8
+                                div.form-row
+                                    div.form-group.col-md-8
                                         label(for="fname") Full Name
                                         input.form-control#fname(type="text")
-                                    .form-group.col-md-4
+                                    div.form-group.col-md-4
                                         label(for="national_id") National ID
                                         input.form-control#national_id(type="text")
-                                    .form-row
-                                        .form-group.col-md-4
-                                            label(for="phone") Phone Number
-                                            input.form-control#phone(type="text")
-                                        .form-group.col-md-4
-                                            label(for="email") Email Address
-                                            input.form-control#email(type="email")
-                                        .form-group.col-md-4
-                                            label(for="location") Physical Address
-                                            input.form-control#location(type="text")
-                            //  End personal data 
-                            //  Product data 
+
+                                div.form-row
+                                    div.form-group.col-md-4
+                                        label(for="phone") Phone Number
+                                        input.form-control#phone(type="text")
+                                    div.form-group.col-md-4
+                                        label(for="email") Email Address
+                                        input.form-control#email(type="email")
+                                    div.form-group.col-md-4
+                                        label(for="location") Physical Address
+                                        input.form-control#location(type="text")
+                            //- End personal data
+
+                            //-  Product data
                             fieldset.client-register-detail.mb-2
                                 legend Product Data
-                                .form-row
-                                    .form-group.col-md-4
+                                div.form-row
+                                    div.form-group.col-md-4
                                         label(for="item-name") Product Name
-                                        input.form-control#item name(type="text")
-                                    .form-group.col-md-4
+                                        input(type="text").form-control#item-name
+                                    div.form-group.col-md-4
                                         label(for="serial-no") Serial Number
-                                        input.form-control#serial-no(type="text")
-                                    .form-group.col-md-4
+                                        input(type="text").form-control#serial-no
+                                    div.form-group.col-md-4
                                         label(for="purchase-receipt") Purchase Receipt
-                                        input.form-control#purchase-receipt(type="text")
-                                .form-row
-                                    .form-group.col-md-4
+                                        input(type="text").form-control#purchase-receipt   
+                                div.form-row
+                                    div.form-group.col-md-4
                                         label(for="tot-price") Total Price
-                                        input.form-control#tot-price(type="text")
-                                    .form-group.col-md-4
+                                        input(type="text").form-control#tot-price
+                                    div.form-group.col-md-4
                                         label(for="initial-pay") Initial Pay
-                                        input.form-control#initial-pay(type="text")
-                                    .form-group.col-md-4
+                                        input(type="text").form-control#initial-pay
+                                    div.form-group.col-md-4
                                         label(for="pay-date") Date of Pay
-                                        input.form-control#pay-date(type="date")
-                                .form-row
-                                    .form-group.col-md-4
+                                        input(type="date").form-control#pay-date
+                                div.form-row
+                                    div.form-group.col-md-4
                                         label(for="next-pay") Next Payment Amount
-                                        input.form-control#next-pay(type="text")
-                                    .form-group.col-md-4
+                                        input(type="text").form-control#next-pay
+                                    div.form-group.col-md-4
                                         label(for="next-date") Next Payment Date
-                                        input.form-control#next-date(type="date")
-                                    .form-group.col-md-4
+                                        input(type="date").form-control#next-date
+                                    div.form-group.col-md-4
                                         label(for="ref-num") Referee Number
-                                        input.form-control#ref-num(type="text")
+                                        input(type="text").form-control#ref-num
                                         small Already existing client
-                                //  End product data 
-                                button.btn.btn-block(type="submit") Register Client
-                            //  End client registration form 
-    //  End main container 
+                            //- End product data 
+
+                            button(type="submit").btn.btn-block Register Client
+                            
+                            //- End client registration form 
+                
+
+    //- End main container 
