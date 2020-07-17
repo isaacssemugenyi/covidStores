@@ -1,0 +1,17 @@
+nav.navbar.navbar-expand-lg.navbar-light#nav-bg
+    //- Logo section
+    a.navbar-brand(href="#") CvStores
+    button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+        span.navbar-toggler-icon
+    //- Nav links
+    div.collapse.navbar-collapse#navbarSupportedContent
+        ul.navbar-nav.mr-auto#nav-list-links
+            li.nav-item
+                a.nav-link(href="/") Home
+            li.nav-item
+                a.nav-link(href="/new_product") Furniture
+            li.nav-item
+                a.nav-link(href="#") Machinery
+        //- Left button
+        form.form-inline.my-2.my-lg-0
+            a.btn.my-2.my-sm-0(href="/login" role="button" style="background: white; color: #eb612a; font-weight: bold; font-size: 15px;") Staff LogIn

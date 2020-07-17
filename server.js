@@ -14,13 +14,15 @@ app.use(express.urlencoded({extended: true}))
 
 // Default route
 app.get('/', (req, res)=>{
-    res.sendFile(__dirname +'/homepage.html')
-})
-
-// Pug Default route
-app.get('/pug', (req, res)=>{
     res.render('homepage')
 })
+
+// Default route
+app.get('/register', (req, res)=>{
+    res.render('client_registration')
+})
+
+
 
 //Login route
 app.get('/login', (req, res)=>{
