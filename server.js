@@ -1,17 +1,16 @@
-// Requires packages
+// Dependencies
 const express = require('express');
 const app = express();
 
-//Using pug engine
-app.set('view engine', 'pug');
+//configurations
+app.set('view engine', 'pug'); //Using pug engine
 app.set('views', './views');
 
-//Using static files
-app.use(express.static('public'));
+//middlewares
+app.use(express.static('public')); //Using static files
+app.use(express.urlencoded({extended: true})) // Accessing form data
 
-// Accessing form data
-app.use(express.urlencoded({extended: true}))
-
+//Routes
 // Default route
 app.get('/', (req, res)=>{
     res.render('homepage')
