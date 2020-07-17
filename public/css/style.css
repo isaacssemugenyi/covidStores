@@ -1,0 +1,242 @@
+/* Navbar */
+#nav-bg {
+    background-color: #eb612a;
+}
+#nav-list-links li a {
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+}
+/* End Navbar */
+/* Products */
+.products {
+    padding: .5rem 0;
+}
+
+.section-title h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 5rem;
+    text-transform: capitalize;
+    letter-spacing: .5rem;
+}
+.products-center {
+    width: 90vw;
+    margin: -3rem auto 0 auto;
+    max-width: 1170px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 2rem;
+}
+.img-container {
+    position: relative;
+    overflow: hidden;
+}
+.bag-btn {
+    position: absolute;
+    top: 60%;
+    right: 0;
+    background: #eb612a;
+    border: none;
+    text-transform: capitalize;
+    padding: 0.5rem 0.75rem;
+    letter-spacing: .3rem;
+    font-weight: bold;
+    transition: all 0.3s linear;
+    transform: translateX(101%);
+    cursor: pointer;
+    color: #fff;
+}
+/* .bag-btn:hover {
+    color: #fff;
+} */
+.img-container:hover .bag-btn {
+    transform: translateX(0);
+}
+.product-img {
+    display: block;
+    width: 100%;
+    min-height: 16rem;
+    transition: all 0.3s linear;
+}
+.img-container:hover .product-img {
+    opacity: 0.5;
+}
+.product .detail {
+    background-color: #e0d7d7;
+    display: flex;
+    width: 100%;
+    padding: .3rem;
+    justify-content: space-between;
+    letter-spacing: 0.3rem;
+}
+.product .detail h3 {
+    text-transform: capitalize;
+    font-size: 1.5rem;
+}
+.product .detail h4 { color: #eb612a; }
+/* End products */
+/* Footer */
+footer {
+    background-color: rgba(0, 0, 0, .9);
+}
+/* End Footer */
+
+/* Login page */
+#login-navbar {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+/* Login Form */
+#login {
+    display: flex;
+    margin: 1.4rem auto;
+    height: 80vh;
+    max-width: 700px;
+    align-items: center;
+    justify-content: center;
+}
+#login form {
+    border-radius: 15px;
+    /* border: 1px dotted #eb612a; 
+    background-color: #f7f3f3; 
+    box-shadow: 3px 3px 5px #a09d9d,
+                -3px -3px 5px #a09d9d; */
+    box-shadow: 1px 1px 1px #eb612a,
+                -1px -1px 1px #eb612a;
+    padding: 2rem;
+    max-width: 680px;
+    width: auto;
+}
+#login form h3 {
+    margin: -1rem 0 1rem 0;
+    padding: 0;
+    font-size: 2rem;
+    text-align: center;
+}
+.form-grouped {
+    display: flex;
+    flex-direction: column;
+    margin: .5rem 0;
+    width: 300px;
+}
+.form-grouped input {
+    background-color: #f7f3f3;
+    border: 1px dotted #eb612a;
+    padding: .5rem 1rem;
+    border-radius: .4rem;
+    font-size: 1.2rem;
+}
+.form-grouped small {
+    margin: 0;
+    font-size: 17px;
+    color: red;
+    padding: 5px 15px;
+    visibility: hidden;
+}
+#login button, #login a {
+    background-color: #eb612a;
+    color: white;
+    font-weight: bold;
+}
+#login button:hover, #login a:hover {
+    background-color: rgba(235, 97, 42, .8);
+    color: rgb(37, 34, 34);
+}
+/* End login form */
+/* End login page */
+
+/* admin sidebar */
+#admin-list {
+    min-height: 91vh; 
+    max-height: 100vh;
+    background-color: #e0d7d7;
+}
+#admin-list ul {
+    margin: 0 -1rem;
+}
+#admin-list ul li{
+    display: block;
+    list-style: none;
+    margin-left: -2.5rem;
+    padding: 1rem 0 1rem 2rem;
+    cursor: pointer;
+}
+#admin-list ul li a {
+    margin: -8px;
+    display: block;
+    text-decoration: none;
+}
+#admin-list ul li:hover {
+    background-color: #343a40;
+}
+/* End admin sidebar */
+/* Tables */
+#product-table {
+    margin: 0 auto;
+}
+#product-table tbody tr:nth-child(even) {
+    background-color: rgba(224, 215, 215, .07);
+}
+#product-table tbody tr:nth-child(odd) {
+    background-color: rgba(224, 215, 215, .05);
+}
+#product-table tbody tr:nth-child(even):hover {
+    background-color: rgba(0,0,0,.06);
+}
+#product-table tbody tr:nth-child(odd):hover {
+    background-color: rgba(0,0,0,.04);
+}
+
+.covid-table {
+    background-color:#e0d7d7;
+}
+
+/* End Tables */
+
+/* Admin panel */
+.admin-top-row {
+    background-color: rgba(250, 250, 255, .3);
+    border-radius: 15px;
+    box-shadow: 2px 2px 3px whitesmoke,
+                -2px -2px 3px whitesmoke;
+}
+.admin-pills {
+    text-align: center; 
+    border-radius: 15px;
+    box-shadow: 2px 2px 3px whitesmoke,
+                -2px -2px 3px whitesmoke;
+}
+/* .admin-sidebar-pill {
+    background-color: rgba(245, 240, 240, 0.1);
+} */
+/* End admin panel */
+
+/* Client registration */
+.register {
+    border-radius: 15px;
+    box-shadow: 1px 1px 1px #eb612a,
+                -1px -1px 1px #eb612a;
+    padding: 2rem;
+}
+.register button, .register a {
+    border: none;
+    background-color: #eb612a;
+    color: white;
+    font-weight: bold;
+}
+.register button:hover, .register a:hover {
+    background-color: rgba(235, 97, 42, .8);
+    color: rgb(37, 34, 34);
+}
+.client-register-detail {
+    border: 1px dotted rgba(0, 0, 0, .3); 
+    padding: 1rem; 
+    border-radius: 15px;
+} 
+.client-register-detail legend {
+    margin-block-end: -10px;
+}
+/* End client registration */
