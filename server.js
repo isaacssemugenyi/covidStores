@@ -17,34 +17,23 @@ app.get('/', (req, res)=>{
     res.render('homepage')
 })
 
+// Login route
+app.get('/login', (req, res)=>{
+    res.render('staff_login')
+})
+
 //Admin_panel route
 app.get('/admin', (req, res)=>{
     res.render('admin_panel')
 })
 
+app.get('/new_product', (req, res)=>{
+    res.render('new_edit_product')
+})
+
 // Default route
 app.get('/register', (req, res)=>{
     res.render('client_registration')
-})
-
-
-
-//Login route
-app.get('/login', (req, res)=>{
-    res.sendFile(__dirname +'/staff_login.html')
-})
-app.get('/admin_panel', (req, res)=>{
-    res.sendFile(__dirname + '/admin_panel.html')
-})
-
-//New products route
-app.get('/new_product', (req, res)=>{
-    res.sendFile(__dirname +'/new_edit_product.html')
-})
-
-//New client route
-app.get('/client-register', (req, res)=>{
-    res.sendFile(__dirname +'/client_registration.html');
 })
 
 //Listening to port
