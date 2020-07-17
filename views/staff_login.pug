@@ -1,0 +1,25 @@
+extends layout
+block content
+    //- Login Container
+    div#login
+        form(action="" method="post")
+            h3 Staff Login
+            div.form-grouped
+                input(type="text" placeholder="Enter valid worker ID" name="id")
+                small Error
+            
+            div.form-grouped
+                input(type="text" placeholder="Enter Username" name="username")
+                small Error
+
+            div.form-grouped
+                input(type="password" placeholder="Type Password" name="password")
+                small Error
+
+            div.form-group
+                input(type="checkbox") Show password
+
+            //- <button class="btn btn-block" type="submmit">Log In</button> -->
+            a(href="/admin" role="button").btn.btn-block Log In
+
+    //- End Login Container

@@ -1,0 +1,76 @@
+extends layout
+block content
+  //- Main container
+  div.container-fluid
+    div.row
+      div.d-none.col-lg-2.d-lg-block#admin-list
+        include include/staff_sidebar
+      //- End of navbar
+
+      div.col-md-12.col-lg-10
+        //- Admin design -->
+        //- Start admin pills
+        div.row.mt-1.pt-2.mx-2.admin-top-row
+          div.col-xs-6.col-sm-4.col-md-2.mb-2
+            div.border.admin-pills.py-1
+              p
+                strong Total Sales
+              small 20
+
+          div.col-xs-6.col-sm-4.col-md-2.mb-2
+            div.border.admin-pills.py-1
+              p
+                strong Total Revenue
+              small 20
+
+          div.col-xs-6.col-sm-4.col-md-2.mb-2
+            div.border.admin-pills.py-1
+              p
+                strong Sales Agent
+              small 20
+
+          div.col-xs-6.col-sm-4.col-md-2.mb-2
+            div.border.admin-pills.py-1
+              p
+                strong Bookings
+              small 20
+
+          div.col-xs-6.col-sm-4.col-md-2.mb-2
+            div.border.admin-pills.py-1
+              p
+                strong No. of Clients
+              small 20
+
+          div.col-xs-6.col-sm-4.col-md-2.mb-2
+            div.border.admin-pills.py-1
+              p
+                strong Claims
+              small 20
+        //- End Admin pills
+
+        //- Next main admin div
+        div.row.mt-1.pt-2.mr-2
+          //- Middle section
+          div.col-md-8
+          //- info to the middle section missing here
+
+          //- End Middle section
+          //- Sidebar
+          div.col-md-4
+            div.row.px-2.py-2
+              div.col-md-12.mb-2.admin-pills
+                p
+                  | Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta eum 
+                  | cupiditate placeat reprehenderit impedit? Doloribus, accusantium!
+                  | quibusdam culpa cupiditate optio magni. Numquam atque enim, est fugiat 
+               
+              div.col-md-12.admin-pills
+                p
+                  | Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta eum 
+                  | quibusdam culpa cupiditate optio magni. Numquam atque enim, est fugiat 
+                  | cupiditate placeat reprehenderit impedit? Doloribus, accusantium!
+              
+          //- End Sidebar 
+        //- End next main admin div  
+      //- End admin design
+  //- End main container 

@@ -17,6 +17,11 @@ app.get('/', (req, res)=>{
     res.render('homepage')
 })
 
+//Admin_panel route
+app.get('/admin', (req, res)=>{
+    res.render('admin_panel')
+})
+
 // Default route
 app.get('/register', (req, res)=>{
     res.render('client_registration')
