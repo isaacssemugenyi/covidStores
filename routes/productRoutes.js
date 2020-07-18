@@ -1,11 +1,6 @@
 const express  = require('express');
 const router = express.Router();
 
-//Default route
-router.get('/', (req, res)=>{
-    res.render('homepage', {title: "Home"})
-})
-
 //fitness route
 router.get('/fitness', (req, res)=>{
     res.render('fitness', {title: "Fitness"})
@@ -27,7 +22,7 @@ router.get('/electronics', (req, res)=>{
 })
 
 //product list access by admin with full right to edit and delete
-router.get('/product', (req, res)=>{
+router.get('/list', (req, res)=>{
     res.render('product_list')
 })
 

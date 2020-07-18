@@ -1,6 +1,7 @@
 // Dependencies
 const express = require('express');
 const path = require('path');
+const homeRoute = require('./routes/homeRoute')
 const adminRoutes = require('./routes/adminRoutes')
 const clientRoutes = require('./routes/clientRoutes')
 const productRoutes = require('./routes/productRoutes')
@@ -18,6 +19,7 @@ app.use(express.static(path.join(__dirname , 'public'))); //Using static files
 app.use(express.urlencoded({extended: true})) // Accessing form data
 
 //Routes
+app.use('/', homeRoute)
 app.use('/client', clientRoutes)
 app.use('/staff', staffRoutes)
 app.use('/product', productRoutes)

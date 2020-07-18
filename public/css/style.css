@@ -157,6 +157,7 @@ footer {
 #admin-list {
     min-height: 91vh; 
     max-height: 100vh;
+    /* position: fixed; */
     background-color: #e0d7d7;
 }
 #admin-list ul {
