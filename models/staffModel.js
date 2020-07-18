@@ -8,6 +8,7 @@ const registerSchema = mongoose.Schema({
         unique: true
     },
     email: String,
+    phone: Number,
     eid: {
         type: String,
         unique: true

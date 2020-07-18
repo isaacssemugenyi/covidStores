@@ -26,29 +26,32 @@ block content
                                         label(for="lname") Last Name
                                         input.form-control#make(type="text" name="lname")
                                 div.form-row
-                                    div.form-group.col-md-6
+                                    div.form-group.col-md-4
                                         label(for="username") Username
                                         input.form-control#username(type="text" name="username")
-                                    div.form-group.col-md-6
+                                    div.form-group.col-md-4
                                         label(for="email") Email
                                         input.form-control#email(type="text" name="email")
+                                    div.form-group.col-md-4
+                                        label(for="phone") Phone Number
+                                        input.form-control#email(type="number" name="phone")
                 
                             fieldset.client-register-detail.mb-2
                                 //- legend Product Data
                                 div.form-row
                                     div.form-group.col-md-6
                                         label(for="eid") Employee ID
-                                        input(type="text").form-control#eid
+                                        input(type="text" name="eid").form-control#eid
                                     div.form-group.col-md-6
                                         label(for="nid") National ID
-                                        input(type="text").form-control#nid       
+                                        input(type="text" name="nid").form-control#nid       
                                 div.form-row
                                     div.form-group.col-md-6
                                         label(for="password") Create a Password
-                                        input.form-control#password(type="text" name="password")
+                                        input.form-control#password(type="password" name="password")
                                     div.form-group.col-md-6
                                         label(for="c_password") Confirm Password
-                                        input.form-control#c_password(type="text")                                
+                                        input.form-control#c_password(type="password")                                
 
                             button(type="submit").btn.btn-block Create Agent
                             

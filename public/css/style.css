@@ -246,3 +246,15 @@ footer {
     margin-block-end: -10px;
 }
 /* End client registration */
+/* Staff card */
+#staff-card {
+    width: auto;
+    max-width: 15rem; 
+    border-radius:15px; 
+    border: 1px solid rgba(235, 97, 42, .3);
+    overflow:hidden;
+}
+#staff-card img {
+    height: 180px;
+}
+/* End staff card */
