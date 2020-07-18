@@ -15,7 +15,7 @@ router.get('/product', (req, res)=>{
 //Pending
 
 //Creating new product done by admin, and editing
-router.get('/new_edit', (req, res)=>{
+router.get('/new', (req, res)=>{
     res.render('new_edit_product')
 })
 
