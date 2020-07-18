@@ -2,6 +2,11 @@
 #nav-bg {
     background-color: #eb612a;
 }
+.change {
+    border-right: 1px solid lime;
+    border-left: 1px solid lime;
+    color: rgb(245, 245, 131);
+}
 #nav-list-links li a {
     color: white;
     font-size: 17px;

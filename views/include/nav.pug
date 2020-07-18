@@ -6,16 +6,16 @@ nav.navbar.navbar-expand-lg.navbar-light#nav-bg
     //- Nav links
     div.collapse.navbar-collapse#navbarSupportedContent
         ul.navbar-nav.mr-auto#nav-list-links
-            li.nav-item
-                a.nav-link(href="/") Home
-            li.nav-item
-                a.nav-link(href="/") Electronics
-            li.nav-item
-                a.nav-link(href="/") Furniture
-            li.nav-item
-                a.nav-link(href="#") Machinery
-            li.nav-item
-                a.nav-link(href="#") Fitness
+            li.nav-item(class=(title == 'Home' ? 'change' : ''))
+                a.nav-link(href="/product") Home
+            li.nav-item(class=(title == 'Electronics' ? 'change' : ''))
+                a.nav-link(href="/product/electronics") Electronics
+            li.nav-item(class=(title == 'Furniture' ? 'change' : ''))
+                a.nav-link(href="/product/furniture") Furniture
+            li.nav-item(class=(title == 'Machinery' ? 'change' : ''))
+                a.nav-link(href="/product/machinery") Machinery
+            li.nav-item(class=(title == 'Fitness' ? 'change' : ''))
+                a.nav-link(href="/product/fitness") Fitness
             
         //- Left button
         form.form-inline.my-2.my-lg-0
