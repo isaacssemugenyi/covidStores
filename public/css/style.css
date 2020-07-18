@@ -178,6 +178,9 @@ footer {
 #admin-list ul li:hover {
     background-color: #343a40;
 }
+.active-section {
+    background-color: #343a40;
+}
 /* End admin sidebar */
 /* Tables */
 #product-table {

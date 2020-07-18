@@ -58,17 +58,23 @@ block content
                                     div.form-group.col-md-4
                                         label(for="pay_interval") Payment Interval
                                         select.form-control#pay_interval(name="pdt_interval")
-                                            option(value="" selected disabled) Select payment interval
+                                            option(value="" selected disabled) Payment interval
                                             option(value="weekly") Weekly
                                             option(value="bi-weekly") Bi-Weekly
                                             option(value="monthly") Monthly
                                             option(value="quartery") Quartery
                                         
                                 div.form-row
-                                    div.form-group.col-md-3
+                                    div.form-group.col-md-4
                                         label(for="pdt_stock") Number in stock
                                         input.form-control#pdt_stock(type="number" name="pdt_stock")
-                                    div.form-group.col-md-8
+                                    div.form-group.col-md-4
+                                        label(for="pdt_scheme") Product Scheme
+                                        select.form-control#pdt_scheme(name="pdt_scheme")
+                                            option(value="" selected disabled) Product Scheme
+                                            option(value="LTPP") LTPP
+                                            option(value="normal") Normal
+                                    div.form-group.col-md-4
                                         label(for="pdt_image") Select Image
                                         input.form-control#pdt_image(type="file" name="pdt_image")
                                 div.form-row

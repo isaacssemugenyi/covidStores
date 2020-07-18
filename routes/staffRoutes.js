@@ -9,12 +9,12 @@ router.get('/login', (req, res)=>{
 
 //New staff route
 router.get('/new', (req, res)=>{
-    res.render('new_edit_staff')
+    res.render('new_edit_staff', {title: "New Staff"})
 })
 
 //Staff list route
 router.get('/list', (req, res)=>{
-    res.render('staff_list')
+    res.render('staff_list', {title: "Staff List"})
 })
 
 router.post('/new', async(req, res)=>{

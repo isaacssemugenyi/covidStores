@@ -23,7 +23,7 @@ router.get('/electronics', (req, res)=>{
 
 //product list access by admin with full right to edit and delete
 router.get('/list', (req, res)=>{
-    res.render('product_list')
+    res.render('product_list', {title: "Product List"})
 })
 
 //product list access by staff/ agent with search and viewing right
@@ -31,7 +31,7 @@ router.get('/list', (req, res)=>{
 
 //Creating new product done by admin, and editing
 router.get('/new', (req, res)=>{
-    res.render('new_edit_product')
+    res.render('new_edit_product', {title: "New Product"})
 })
 
 //deleting a product, done by admin
