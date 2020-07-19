@@ -23,7 +23,7 @@ router.post('/new', async(req, res)=>{
         await staff.save((err, result)=>{
             if(err) console.log(err)
             // res.json(result);
-            res.redirect('/staff/list')
+            res.redirect(303, '/staff/list')
         })
     } catch(error){
         console.log(error)
