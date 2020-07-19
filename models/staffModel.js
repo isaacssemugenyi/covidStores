@@ -19,8 +19,11 @@ const registerSchema = mongoose.Schema({
     },
     password: {
         type: String, 
-        required: true,
-        unique: true
+        required: true
+    },
+    c_password: {
+       type: String,
+       required: true
     }
 })
 
