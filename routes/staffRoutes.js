@@ -9,7 +9,7 @@ router.get('/login', (req, res)=>{
 
 //New staff route
 router.get('/new', (req, res)=>{
-    res.render('new_edit_staff', {title: "New Staff"})
+    res.render('new_staff', {title: "New Staff"})
 })
 
 //Staff list route

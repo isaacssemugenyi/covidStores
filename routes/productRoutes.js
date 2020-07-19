@@ -1,11 +1,23 @@
 const express  = require('express');
 const router = express.Router();
 
+  //Require in the product model
 const Product = require('../models/productModel');
 
 //fitness route
 router.get('/fitness', (req, res)=>{
-    res.render('fitness', {title: "Fitness"})
+    Product.find({pdt_category: 'fitness'},(err, products)=>{
+        var context = {
+            products: products.map(product => {
+                return {
+                    name: product.pdt_name,
+                    price: product.pdt_price,
+                    scheme: product.pdt_scheme
+                }
+            })
+        }
+        res.render('fitness', {title: "Fitness", context: context})
+    }).sort({"_id":-1})
 })
 
 //machinery route
@@ -42,7 +54,7 @@ router.get('/list', (req, res)=>{
             })
         }
         res.render('product_list', {title: "Product List", context: context})
-    })
+    }).sort({"_id":-1})
 })
 
 //product list access by staff/ agent with search and viewing right
@@ -56,7 +68,6 @@ router.get('/new', (req, res)=>{
 //Creating new product done by admin, and editing
 router.post('/new', async (req, res)=>{
     const product = new Product(req.body);
-    console.log(product);
     try {
        await product.save((err)=>{
             if(err){

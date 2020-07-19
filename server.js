@@ -34,9 +34,6 @@ app.use(session({
     //cookie: { secure: true }
   }))
 
-//Requiring momentjs to format date display
-app.locals.moment = require('moment');
-
 // Express messages middleware
 app.use(require('connect-flash')());
 app.use(function (req, res, next) {

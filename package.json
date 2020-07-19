@@ -10,7 +10,6 @@
     "express-messages": "^1.0.1",
     "express-session": "^1.17.1",
     "express-validator": "^6.6.0",
-    "moment": "^2.27.0",
     "mongoose": "^5.9.25",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",

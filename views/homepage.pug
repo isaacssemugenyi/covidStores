@@ -7,22 +7,16 @@ block content
       h2 Our products
     div.products-center
       //- Single product
-      article.product
-        div.img-container
-          img.product-img(src="/img/home.jpg" alt="products")
-          button.bag-btn Ugx. 500,000
-          div.detail
-            h3 Kettle
-            h4 LTPP
+      each product in context.products
+        article.product
+          div.img-container
+            img.product-img(src="/img/home.jpg" alt="products")
+            button.bag-btn Ugx. #{product.price}
+            div.detail
+              h3= product.name
+              if product.scheme == "LTPP"
+                h4= product.scheme
             //- End single product 
-      //- Single product 
-      article.product
-        div.img-container
-          img.product-img(src="/img/home.jpg" alt="products")
-          button.bag-btn Ugx. 500,000
-          div.detail
-            h3 Kettle
-            //- h4 LTPP
         //- End single product           
   //- End main container
   //- Footer 

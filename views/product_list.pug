@@ -24,9 +24,8 @@ block content
           tbody
             //- Products
             each product in context.products
-              //- - const date = product.entry.toLocaleDateString();
               tr
-                td= product.serial
+                td #{product.serial}
                 td #{product.name}
                 td #{product.category}
                 td #{product.price}
