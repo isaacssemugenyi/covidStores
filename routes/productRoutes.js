@@ -28,13 +28,16 @@ router.get('/list', (req, res)=>{
     Product.find((err, products)=>{
         var context = {
             products: products.map(product => {
+                const displayYear = () => {
+                   return `${product.entry_date.getDate()} - ${product.entry_date.getMonth()} - ${product.entry_date.getFullYear()}` };
                 return {
+                    id: product._id,
                     serial: product.serial_no,
                     name: product.pdt_name,
                     category: product.pdt_category,
                     price: product.pdt_price,
                     scheme: product.pdt_scheme,
-                    entry: product.entry_date.getFullYear()                   
+                    entry: displayYear()                  
                 }
             })
         }

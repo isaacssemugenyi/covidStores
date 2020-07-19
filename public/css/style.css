@@ -261,3 +261,12 @@ footer {
     height: 180px;
 }
 /* End staff card */
+
+/* Error and success messages */
+.float-messages {
+    position: absolute;
+    max-width: 800px;
+    width: 300px;
+    top: 0;
+    right: 30%;
+}

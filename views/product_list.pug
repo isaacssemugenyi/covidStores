@@ -24,6 +24,7 @@ block content
           tbody
             //- Products
             each product in context.products
+              //- - const date = product.entry.toLocaleDateString();
               tr
                 td= product.serial
                 td #{product.name}
@@ -32,10 +33,10 @@ block content
                 td #{product.scheme}
                 td #{product.entry}
                 td
-                  a(href="#" role="button").btn.btn-warning.py-1.px-2
+                  a(href="/product/edit/" +product.id role="button").btn.btn-warning.py-1.px-2
                     i.icon-pencil.fa-lg
                 td
-                  a(href="#" role="button").btn.btn-danger.py-1.px-2
+                  a(href="#" role="button" data-id="#{product.id}").btn.btn-danger.py-1.px-2
                     i.icon-trash.fa-lg
             //- End Products
           //- End products table
