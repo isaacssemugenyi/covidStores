@@ -5,7 +5,7 @@ block content
   section.products
     div.section-title
       h2= title
-    div.products-center 
+    div.products-center
       //- Single product
       each product in context.products
         article.product
@@ -14,8 +14,7 @@ block content
             button.bag-btn Ugx. #{product.price}
             div.detail
               h3= product.name
-              if product.scheme == "LTPP"
-                h4= product.scheme
+              h4= product.scheme
               //- End single product           
   //- End main container
   //- Footer 

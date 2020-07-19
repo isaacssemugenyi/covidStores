@@ -18,7 +18,7 @@ block content
               th(scope="col") Price
               th(scope="col") Scheme
               th(scope="col") Created
-              th(scope="col") Edit
+              th(scope="col") More
               th(scope="col") Delete
           
           tbody
@@ -32,11 +32,12 @@ block content
                 td #{product.scheme}
                 td #{product.entry}
                 td
-                  a(href="/product/edit/" +product.id role="button").btn.btn-warning.py-1.px-2
-                    i.icon-pencil.fa-lg
+                  a(href="/product/view/" +product.id role="button" title="View more").btn.btn-warning.py-1.px-2
+                    i.icon-home.fa-sm
                 td
                   a(href="#" role="button" data-id="#{product.id}").btn.btn-danger.py-1.px-2
-                    i.icon-trash.fa-lg
+                    i.icon-trash.fa-sm
+                      
             //- End Products
           //- End products table
     

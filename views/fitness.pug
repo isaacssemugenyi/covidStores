@@ -2,9 +2,9 @@ extends layout
 block content
  
   //- Main container
-  section.products(style="min-height: 70vh;")
+  section.products
     div.section-title
-      h2 Our products
+      h2= title
     div.products-center
       //- Single product
       each product in context.products
@@ -20,36 +20,4 @@ block content
   //- End main container
   //- Footer 
   footer.mt-3
-    div.container
-      div.row
-        div.offset-md-2.col-md-8.pt-2
-          div.row
-            //- First links
-            div.col-md-6
-              p.text-light(style="text-transform: uppercase; font-weight: bold;") Contact
-              ul.nav.flex-column
-                li.nav-item
-                  a.nav-link.text-primary(href="#") 075596958849
-                li.nav-item
-                  a.nav-link.text-primary(href="#") orlin@engineer.com
-                li.nav-item
-                  a.nav-link.text-primary(href="#") Visit us
-            //- End first links
-
-            //- Second links
-            div.col-md-6
-              p.text-light(style="text-transform: uppercase; font-weight: bold;") Inquiry  
-              ul.nav.flex-column
-                li.nav-item
-                  a.nav-link.text-primary(href="#") Logo a complaint
-                li.nav-item
-                  a.nav-link.text-primary(href="#") Our Services
-                li.nav-item
-                  a.nav-link.text-primary(href="#") Location &amp; Branches
-            //- End Second link or &#38;
-     
-      //- Copyright section
-      div.container.last-item
-        div.row
-          div.col-md-12.text-center.my-3.text-light &copy; Copyright : Isaac S 2020
-  //- End footer 
+    include include/footer.pug

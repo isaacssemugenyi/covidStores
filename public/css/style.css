@@ -16,6 +16,7 @@
 /* Products */
 .products {
     padding: .5rem 0;
+    min-height: 70vh;
 }
 
 .section-title h2 {
@@ -37,36 +38,37 @@
 .img-container {
     position: relative;
     overflow: hidden;
+    transition: all 0.3s linear;
 }
 .bag-btn {
     position: absolute;
     top: 60%;
     right: 0;
-    background: #eb612a;
+    background: rgba(235, 97, 42, .9);
     border: none;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
     text-transform: capitalize;
     padding: 0.5rem 0.75rem;
     letter-spacing: .3rem;
     font-weight: bold;
-    transition: all 0.3s linear;
-    transform: translateX(101%);
     cursor: pointer;
     color: #fff;
 }
-/* .bag-btn:hover {
-    color: #fff;
-} */
-.img-container:hover .bag-btn {
-    transform: translateX(0);
-}
+
 .product-img {
     display: block;
     width: 100%;
     min-height: 16rem;
     transition: all 0.3s linear;
+    opacity: 0.75;
+}
+.img-container:hover {
+    box-shadow: inset 1px 1px 2px #eb612a,
+                -1px -1px 2px #eb612a;
 }
 .img-container:hover .product-img {
-    opacity: 0.5;
+    opacity: 1;
 }
 .product .detail {
     background-color: #e0d7d7;
@@ -105,10 +107,6 @@ footer {
 }
 #login form {
     border-radius: 15px;
-    /* border: 1px dotted #eb612a; 
-    background-color: #f7f3f3; 
-    box-shadow: 3px 3px 5px #a09d9d,
-                -3px -3px 5px #a09d9d; */
     box-shadow: 1px 1px 1px #eb612a,
                 -1px -1px 1px #eb612a;
     padding: 2rem;

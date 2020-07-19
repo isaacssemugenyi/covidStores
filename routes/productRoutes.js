@@ -5,6 +5,22 @@ const router = express.Router();
 const Product = require('../models/productModel');
 
 //fitness route
+router.get('/', (req, res)=>{
+    Product.find({pdt_scheme: 'LTPP'},(err, products)=>{
+        var context = {
+            products: products.map(product => {
+                return {
+                    name: product.pdt_name,
+                    price: product.pdt_price,
+                    scheme: product.pdt_scheme
+                }
+            })
+        }
+        res.render('ltpp', {title: "LTPP", context: context})
+    }).sort({"_id":-1})
+})
+
+//fitness route
 router.get('/fitness', (req, res)=>{
     Product.find({pdt_category: 'fitness'},(err, products)=>{
         var context = {
@@ -22,17 +38,50 @@ router.get('/fitness', (req, res)=>{
 
 //machinery route
 router.get('/machinery', (req, res)=>{
-    res.render('machinery', {title: "Machinery"})
+    Product.find({pdt_category: 'machinery'},(err, products)=>{
+        var context = {
+            products: products.map(product => {
+                return {
+                    name: product.pdt_name,
+                    price: product.pdt_price,
+                    scheme: product.pdt_scheme
+                }
+            })
+        }
+        res.render('machinery', {title: "Machinery", context: context})
+    }).sort({"_id":-1})
 })
 
 //Furniture route
 router.get('/furniture', (req, res)=>{
-    res.render('furniture', {title: "Furniture"})
+    Product.find({pdt_category: 'furniture'},(err, products)=>{
+        var context = {
+            products: products.map(product => {
+                return {
+                    name: product.pdt_name,
+                    price: product.pdt_price,
+                    scheme: product.pdt_scheme
+                }
+            })
+        }
+        res.render('furniture', {title: "Furniture", context: context})
+    }).sort({"_id":-1})
 })
 
 //electronics route
 router.get('/electronics', (req, res)=>{
-    res.render('electronics', {title: "Electronics"})
+    Product.find({pdt_category: 'electronics'},(err, products)=>{
+        var context = {
+            products: products.map(product => {
+                return {
+                    name: product.pdt_name,
+                    price: product.pdt_price,
+                    scheme: product.pdt_scheme
+                }
+            })
+        }
+        res.render('electronics', {title: "Electronics", context: context})
+    }).sort({"_id":-1})
 })
 
 //product list access by admin with full right to edit and delete
@@ -62,7 +111,7 @@ router.get('/list', (req, res)=>{
 
 //Serving the product create page
 router.get('/new', (req, res)=>{
-    res.render('new_edit_product', {title: "New Product"})
+    res.render('new_product', {title: "New Product"})
 })
 
 //Creating new product done by admin, and editing
@@ -82,8 +131,26 @@ router.post('/new', async (req, res)=>{
     }
 })
 
+//update product route
+router.get('/view/:id', (req, res)=>{
+    let query = req.params.id;
+    Product.findById(query, (err, product)=>{
+        if(err) {
+            console.log(err);
+        } else {
+            res.render('view_product', 
+            {
+                title: "View Product",
+                product: product
+            }
+            )
+        }
+    })
+})
+
 //deleting a product, done by admin
 
 //deleting multiple products done by admin also
+
 
 module.exports = router
