@@ -44,4 +44,6 @@ router.post('/new', async(req, res)=>{
     }
 })
 
+//Delete route for staff
+
 module.exports = router

@@ -12,10 +12,10 @@ block content
                     div.col-md-8.offset-md-2
                         //- Client registration form
                         //- Handle scroll with css of this section
-                        form.my-4.register(enctype="multipart/form-data" action="#" method="POST")
+                        form.my-4.register(action="/product/new" method="POST")
                             h3.text-center Product Form
                             //- Personal data
-                            input(type="hidden")
+                            //- input(type="hidden")
                             fieldset.client-register-detail.mb-2
                                 //- legend Personal Data
                                 div.form-row
@@ -31,8 +31,8 @@ block content
 
                                 div.form-row
                                     div.form-group.col-md-4
-                                        label(for="category") Category
-                                        select.form-control#category(name="pdt_ctegory")
+                                        label(for="pdt_category") Category
+                                        select.form-control#pdt_category(name="pdt_category")
                                             option(value="" selected disabled) Select category
                                             option(value="furniture") Furniture
                                             option(value="electronics") Electronics
@@ -51,16 +51,15 @@ block content
                                 div.form-row
                                     div.form-group.col-md-4
                                         label(for="pdt_price") Product Price
-                                        input(type="number").form-control#pdt_price
-                                    div.form-group.col-md-4
-                                        label(for="initial_pay") Initial Pay
-                                        input(type="number").form-control#initial_pay
+                                        input(type="number" name="pdt_price").form-control#pdt_price
+                                    //- div.form-group.col-md-4
+                                    //-     label(for="initial_pay") Initial Pay
+                                    //-     input(type="number").form-control#initial_pay
                                     div.form-group.col-md-4
                                         label(for="pay_interval") Payment Interval
-                                        select.form-control#pay_interval(name="pdt_interval")
+                                        select.form-control#pay_interval(name="pay_interval")
                                             option(value="" selected disabled) Payment interval
-                                            option(value="weekly") Weekly
-                                            option(value="bi-weekly") Bi-Weekly
+                                            option(value="cash") Cash
                                             option(value="monthly") Monthly
                                             option(value="quartery") Quartery
                                         
@@ -80,7 +79,7 @@ block content
                                 div.form-row
                                     div.form-group.col-md-12
                                         label(for="pdt_desc") Describe the product
-                                        textarea#pdt_desc(name="", cols="10", rows="2").form-control
+                                        textarea#pdt_desc(name="pdt_desc", cols="10", rows="2").form-control
                                 
 
                             button(type="submit").btn.btn-block Create a product
