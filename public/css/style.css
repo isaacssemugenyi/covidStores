@@ -61,7 +61,7 @@
     width: 100%;
     min-height: 16rem;
     transition: all 0.3s linear;
-    opacity: 0.75;
+    opacity: 0.95;
 }
 .img-container:hover {
     box-shadow: inset 1px 1px 2px #eb612a,

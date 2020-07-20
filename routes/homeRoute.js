@@ -18,5 +18,6 @@ router.get('/', (req, res)=>{
         }
         res.render('homepage', {title: "Home", context: context})
     }).sort({"_id":-1})
+    // .limit(8)
 })
 module.exports = router;
