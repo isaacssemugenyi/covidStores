@@ -1,3 +1,4 @@
+const opts = { toJSON: { virtuals: true } };
 const mongoose = require('mongoose');
 
 const productSchema = mongoose.Schema({
@@ -13,7 +14,12 @@ const productSchema = mongoose.Schema({
     pdt_scheme: {type: String, required: true},
     pdt_image : {type: String},
     pdt_desc: {type: String}
-})
+}, opts)
+
+
+productSchema.virtual('initial_pay').get(function() {
+    return this.pdt_price / 2;
+  });
 
 var Product = mongoose.model('Product', productSchema);
 module.exports = Product;

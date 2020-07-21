@@ -4,6 +4,7 @@ const path = require('path');
 const {body, validationResult} = require('express-validator');
 const flash = require('connect-flash');
 const session = require('express-session');
+const fileUpload = require('express-fileupload');
 
 
 const app = express();
@@ -23,6 +24,8 @@ const DB = require('./config/db');
 //middlewares
 app.use(express.static(path.join(__dirname , 'public'))); //Using static files
 app.use(express.urlencoded({extended: true})) // Accessing form data
+app.use(fileUpload()); //Accesing the express-fileupload middleware
+
 
 // Express session middleware
 app.use(session({

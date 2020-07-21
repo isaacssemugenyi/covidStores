@@ -1,4 +1,5 @@
 const express  = require('express');
+const fileUpload = require('express-fileupload')
 const router = express.Router();
 
   //Require in the product model
@@ -116,7 +117,32 @@ router.get('/new', (req, res)=>{
 
 //Creating new product done by admin, and editing
 router.post('/new', async (req, res)=>{
-    const product = new Product(req.body);
+    // Working on the image uploading
+    if(!req.files || Object.keys(req.files).length === 0){
+        return res.status(400).send('No file were uploaded.');
+    }
+    let productImage = req.files.pdt_image;
+    let productName = req.files.pdt_image.name;
+    let productPath = './public/uploads/products/'+productName;
+    productImage.mv(productPath , (err)=> {
+        if (err) console.log(err)
+        console.log('File uploaded')
+      });
+    // End working on image
+    const product = new Product();
+    product.pdt_name = req.body.pdt_name;
+    product.make = req.body.make; 
+    product.entry_date = req.body.entry_date; 
+    product.pdt_category = req.body.pdt_category;
+    product.serial_no = req.body.serial_no;
+    product.pdt_color = req.body.pdt_color;
+    product.pdt_price = req.body.pdt_price;
+    product.pay_interval = req.body.pay_interval;
+    product.pdt_stock = req.body.pdt_stock;
+    product.pdt_scheme = req.body.pdt_scheme
+    product.pdt_image = productPath;
+    product.pdt_desc = req.body.pdt_desc;
+   
     try {
        await product.save((err)=>{
             if(err){
