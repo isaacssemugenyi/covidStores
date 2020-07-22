@@ -12,7 +12,8 @@ router.get('/', (req, res)=>{
                 return {
                     name: product.pdt_name,
                     price: product.pdt_price,
-                    scheme: product.pdt_scheme
+                    scheme: product.pdt_scheme,
+                    image: product.pdt_image
                 }
             })
         }

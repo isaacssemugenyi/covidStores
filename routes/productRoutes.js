@@ -1,8 +1,38 @@
 const express  = require('express');
-const fileUpload = require('express-fileupload')
 const router = express.Router();
+const path = require('path');
+const multer = require('multer');
+const fs = require('fs');
 
-  //Require in the product model
+// Generate a random number to 
+const name = ()=> Math.floor(Math.random()*10000); 
+
+// Working with multer diskStorage method
+const storage = multer.diskStorage({
+     destination: function(req, file, cb){
+         cb(null, './uploads/');
+    },
+     filename: function(req, file, cb){
+         cb(null, name() + file.originalname);
+     }
+ });
+
+const fileFilter = (req, file, cb)=>{
+    //reject a file
+    if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+        cb(null, true);
+    } else {
+        cb(null, false);
+    }
+}
+
+ const upload = multer({
+     storage: storage,
+     limits: {fileSize: 1024 * 1024 * 7},
+     fileFilter: fileFilter
+ });
+
+//Require in the product model
 const Product = require('../models/productModel');
 
 //fitness route
@@ -13,7 +43,8 @@ router.get('/', (req, res)=>{
                 return {
                     name: product.pdt_name,
                     price: product.pdt_price,
-                    scheme: product.pdt_scheme
+                    scheme: product.pdt_scheme,
+                    image: product.pdt_image
                 }
             })
         }
@@ -29,7 +60,8 @@ router.get('/fitness', (req, res)=>{
                 return {
                     name: product.pdt_name,
                     price: product.pdt_price,
-                    scheme: product.pdt_scheme
+                    scheme: product.pdt_scheme,
+                    image: product.pdt_image
                 }
             })
         }
@@ -45,7 +77,8 @@ router.get('/machinery', (req, res)=>{
                 return {
                     name: product.pdt_name,
                     price: product.pdt_price,
-                    scheme: product.pdt_scheme
+                    scheme: product.pdt_scheme,
+                    image: product.pdt_image
                 }
             })
         }
@@ -61,7 +94,8 @@ router.get('/furniture', (req, res)=>{
                 return {
                     name: product.pdt_name,
                     price: product.pdt_price,
-                    scheme: product.pdt_scheme
+                    scheme: product.pdt_scheme,
+                    image: product.pdt_image
                 }
             })
         }
@@ -77,7 +111,8 @@ router.get('/electronics', (req, res)=>{
                 return {
                     name: product.pdt_name,
                     price: product.pdt_price,
-                    scheme: product.pdt_scheme
+                    scheme: product.pdt_scheme,
+                    image: product.pdt_image
                 }
             })
         }
@@ -116,18 +151,7 @@ router.get('/new', (req, res)=>{
 })
 
 //Creating new product done by admin, and editing
-router.post('/new', async (req, res)=>{
-    // Working on the image uploading
-    if(!req.files || Object.keys(req.files).length === 0){
-        return res.status(400).send('No file were uploaded.');
-    }
-    let productImage = req.files.pdt_image;
-    let productName = req.files.pdt_image.name;
-    let productPath = './public/uploads/products/'+productName;
-    productImage.mv(productPath , (err)=> {
-        if (err) console.log(err)
-        console.log('File uploaded')
-      });
+router.post('/new', upload.single('pdt_image'), async (req, res)=>{
     // End working on image
     const product = new Product();
     product.pdt_name = req.body.pdt_name;
@@ -140,9 +164,9 @@ router.post('/new', async (req, res)=>{
     product.pay_interval = req.body.pay_interval;
     product.pdt_stock = req.body.pdt_stock;
     product.pdt_scheme = req.body.pdt_scheme
-    product.pdt_image = productPath;
+    product.pdt_image = req.file.path;
     product.pdt_desc = req.body.pdt_desc;
-   
+ 
     try {
        await product.save((err)=>{
             if(err){
@@ -175,7 +199,21 @@ router.get('/view/:id', (req, res)=>{
 })
 
 //deleting a product, done by admin
-
+router.get('/delete/:id', async (req, res)=>{
+    let query = req.params.id;
+    Product.findByIdAndRemove(query, (err, product)=>{
+        if(err){
+            console.log(err);
+        }else {
+            fs.unlink(product.pdt_image , function (err) {
+            if (err) throw err;
+            // if no error, show flash message and redirect to product list
+            req.flash('succces', "File deleted");
+            res.redirect('/product/list');
+            });  
+        }
+    })
+})
 //deleting multiple products done by admin also
 
 

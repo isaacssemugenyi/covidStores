@@ -4,8 +4,6 @@ const path = require('path');
 const {body, validationResult} = require('express-validator');
 const flash = require('connect-flash');
 const session = require('express-session');
-const fileUpload = require('express-fileupload');
-
 
 const app = express();
 
@@ -22,19 +20,17 @@ app.set('views', './views');
 const DB = require('./config/db');
 
 //middlewares
+app.use('/uploads', express.static('uploads'));
 app.use(express.static(path.join(__dirname , 'public'))); //Using static files
 app.use(express.urlencoded({extended: true})) // Accessing form data
-app.use(fileUpload()); //Accesing the express-fileupload middleware
+// app.use(express.json())
 
 
 // Express session middleware
 app.use(session({
     secret: 'keyboard cat',
     resave: true,
-    //resave: false,
-    saveUninitialized: true,
-    cookie: { maxAge: 60000 }
-    //cookie: { secure: true }
+    saveUninitialized: true
   }))
 
 // Express messages middleware
@@ -43,24 +39,6 @@ app.use(function (req, res, next) {
   res.locals.messages = require('express-messages')(req, res); 
 next();
 });
-
-// Express validation middleware
-// app.use(expressValidator({
-//     errorFormatter: function(param, msg, value){
-//         var namespace = param.split('.'),
-//         root = namespace.shift(),
-//         formParam = root;
-
-//         while(namespace.length){
-//             formParam += '[' +namespace.shift() + ']';
-//         }
-//         return {
-//             param: formParam,
-//             msg: msg,
-//             value : value
-//         }
-//     }
-// }))
 
 //Routes
 app.use('/', homeRoute)

@@ -12,7 +12,7 @@ block content
                     div.col-md-8.offset-md-2
                         //- Client registration form
                         //- Handle scroll with css of this section
-                        form.my-4.register(action="/product/new" method="POST" encType="multipart/form-data")
+                        form.my-4.register(action="/product/new" method="POST" enctype="multipart/form-data")
                             h3.text-center Product Form
                             //- Personal data
                             //- input(type="hidden")
@@ -75,7 +75,7 @@ block content
                                             option(value="normal") Normal
                                     div.form-group.col-md-4
                                         label(for="pdt_image") Select Image
-                                        input.form-control#pdt_image(type="file" name="pdt_image")
+                                        input.form-control#pdt_image(type="file" name="pdt_image" accept="image/*")
                                 div.form-row
                                     div.form-group.col-md-12
                                         label(for="pdt_desc") Describe the product
