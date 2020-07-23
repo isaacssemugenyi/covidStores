@@ -142,8 +142,7 @@ router.get('/list', (req, res)=>{
     }).sort({"_id":-1})
 })
 
-//product list access by staff/ agent with search and viewing right
-//Pending
+//product list access by staff/ agent with search and viewing right //Pending
 
 //Serving the product create page
 router.get('/new', (req, res)=>{
@@ -197,6 +196,9 @@ router.get('/view/:id', (req, res)=>{
         }
     })
 })
+
+//Product Edit route, done by admin
+//to be workedon today
 
 //deleting a product, done by admin
 router.get('/delete/:id', async (req, res)=>{
