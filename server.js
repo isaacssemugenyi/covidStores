@@ -1,21 +1,27 @@
 // Dependencies
 const express = require('express');
 const path = require('path');
+const mongoose = require('mongoose');
 const {body, validationResult} = require('express-validator');
 const flash = require('connect-flash');
 const session = require('express-session');
+const passport = require('passport');
+const config = require('./config/db');
+
 
 //instantiations
 const app = express();
 app.set('view engine', 'pug'); //Using pug engine
 app.set('views', './views');
-const DB = require('./config/db');
+
+mongoose.connect(config.database, { useUnifiedTopology: true, useNewUrlParser: true });
 
 const homeRoute = require('./routes/homeRoute')
 const adminRoutes = require('./routes/adminRoutes')
 const clientRoutes = require('./routes/clientRoutes')
 const productRoutes = require('./routes/productRoutes')
-const staffRoutes = require('./routes/staffRoutes')
+const staffRoutes = require('./routes/staffRoutes');
+const { Mongoose } = require('mongoose');
 
 //configurations
 app.use('/uploads', express.static('uploads'));
@@ -35,6 +41,17 @@ app.use(function (req, res, next) {
   next();
 });
 
+//Passport Config
+require('./config/passport')(passport);
+//Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+//Global variable for loggedin users
+app.get('*', (req, res, next)=>{
+  res.locals.user = req.user || null;
+  next();
+})
 
 //Routing
 app.use('/', homeRoute)

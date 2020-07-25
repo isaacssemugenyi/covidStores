@@ -1,11 +1,11 @@
 const express  = require('express');
 const router = express.Router();
-const staffRegister = require('../models/staffModel');
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
 
-// Login route
-router.get('/login', (req, res)=>{
-    res.render('staff_login')
-})
+
+
+const staffRegister = require('../models/staffModel');
 
 //New staff route
 router.get('/new', (req, res)=>{
@@ -28,20 +28,52 @@ router.post('/new', async(req, res)=>{
     staff.eid = req.body.eid;
     staff.nid = req.body.nid;
     staff.password = req.body.password;
-    staff.c_password = req.body.c_password;
+    //staff.c_password = req.body.c_password;
 
     try{
-        await staff.save((err, result)=>{
-            if(err) {
-                console.log(err)
-            }else {
-                req.flash('success', 'Staff Added');
-                res.redirect(303, '/staff/list')
-            }
+        await bcrypt.genSalt(10, (err, salt)=>{
+            bcrypt.hash(staff.password, salt, (error, hash)=>{
+                if(error){
+                    console.log(error)
+                } else {
+                    staff.password = hash;
+                    staff.save((err)=>{
+                        if(err) {
+                            console.log(err);
+                            return;
+                        }else {
+                            req.flash('success', 'Staff Added');
+                            res.redirect(303, '/staff/list')
+                        }
+                    })
+                }  
+            });
         })
     } catch(error){
         console.log(error)
     }
+})
+
+
+// Login page route
+router.get('/login', (req, res)=>{
+    res.render('staff_login')
+})
+
+//Login process
+router.post('/login', (req, res, next)=>{
+    passport.authenticate('local', {
+        successRedirect: '/admin',
+        failureRedirect: '/staff/login',
+        failureFlash: true
+    })(req, res, next);
+})
+
+//Staff Logout
+router.get('/logout', (req, res)=>{
+    req.logout();
+    req.flash('Success', 'You are logged out');
+    res.redirect('/staff/login');
 })
 
 //Delete route for staff

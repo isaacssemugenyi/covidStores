@@ -4,7 +4,7 @@ const path = require('path');
 const multer = require('multer');
 const fs = require('fs');
 
-// Generate a random number to 
+// Generate a random number to name
 const name = ()=> Math.floor(Math.random()*10000); 
 
 // Working with multer diskStorage method
@@ -14,6 +14,7 @@ const storage = multer.diskStorage({
     },
      filename: function(req, file, cb){
          cb(null, name() + file.originalname);
+         console.log(file);
      }
  });
 
@@ -165,14 +166,14 @@ router.post('/new', upload.single('pdt_image'), async (req, res)=>{
     product.pdt_scheme = req.body.pdt_scheme
     product.pdt_image = req.file.path;
     product.pdt_desc = req.body.pdt_desc;
- 
+    console.log(req.file.path);
     try {
        await product.save((err)=>{
             if(err){
                 console.log(err)
             } else {
                 req.flash('success','Product Created')
-                res.redirect('/product/list')
+                res.render('new_product')
             }
         })
     } catch(err){

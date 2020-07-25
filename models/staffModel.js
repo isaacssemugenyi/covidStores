@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//staff Schema
 const registerSchema = mongoose.Schema({
     fname: String,
     lname: String,
@@ -21,10 +22,10 @@ const registerSchema = mongoose.Schema({
         type: String, 
         required: true
     },
-    c_password: {
-       type: String,
-       required: true
-    }
+    // c_password: {
+    //    type: String,
+    //    required: true
+    // }
 })
 
 const Staff = mongoose.model('Staff', registerSchema);

@@ -2,14 +2,10 @@ extends layout
 block content
     //- Login Container
     div#login
-        form(action="" method="post")
+        form(action="/staff/login" method="post")
             h3 Staff Login
             div.form-grouped
                 input(type="text" placeholder="Enter Username" name="username")
-                small Error
-                
-            div.form-grouped
-                input(type="text" placeholder="Enter valid worker ID" name="id")
                 small Error
 
             div.form-grouped
@@ -20,7 +16,7 @@ block content
                 input#pass-show(type="checkbox") 
                 label(style="margin-left: 10px;") Show password
 
-            //- <button class="btn btn-block" type="submmit">Log In</button> -->
-            a(href="/admin" role="button").btn.btn-block Log In
+            button.btn.btn-block(type="submmit") Log In
+            //- a(href="/admin" role="button").btn.btn-block Log In
 
     //- End Login Container
