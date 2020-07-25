@@ -10,7 +10,7 @@ const name = ()=> Math.floor(Math.random()*10000);
 // Working with multer diskStorage method
 const storage = multer.diskStorage({
      destination: function(req, file, cb){
-         cb(null, './uploads/');
+         cb(null, 'uploads/');
     },
      filename: function(req, file, cb){
          cb(null, name() + file.originalname);
@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
 
 const fileFilter = (req, file, cb)=>{
     //reject a file
-    if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png' || file.mimetype === '') {
         cb(null, true);
     } else {
         cb(null, false);

@@ -10,7 +10,7 @@ block content
       each product in context.products
         article.product
           div.img-container
-            img.product-img(src="/img/home.jpg" alt="products")
+            img.product-img(alt="products" src=product.image)
             button.bag-btn Ugx. #{product.price}
             div.detail
               h3= product.name
