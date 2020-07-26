@@ -153,8 +153,7 @@ footer {
 
 /* admin sidebar */
 #admin-list {
-    min-height: 91vh; 
-    max-height: 100vh;
+    min-height: 120vh; 
     /* position: fixed; */
     background-color: #e0d7d7;
 }
@@ -173,6 +172,7 @@ footer {
     display: block;
     text-decoration: none;
 }
+
 #admin-list ul li:hover {
     background-color: #343a40;
 }

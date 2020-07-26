@@ -18,7 +18,11 @@ const registerSchema = mongoose.Schema({
         type: String,
         unique: true
     },
-    role: String,
+    role: { 
+        type: String, 
+        default: "Agent",
+        enum: ["Agent", "Admin"] 
+    },
     password: {
         type: String, 
         required: true
