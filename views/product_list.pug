@@ -30,7 +30,7 @@ block content
                 td #{product.category}
                 td #{product.price}
                 td #{product.scheme}
-                td #{product.entry}
+                td #{moment(product.entry).format("DD-MM-YYYY (HH:MM:SS)")}
                 td
                   a(href="/product/view/" +product.id role="button" title="View more").btn.btn-warning.py-1.px-2
                     i.icon-home.fa-sm

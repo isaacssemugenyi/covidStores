@@ -2,6 +2,7 @@ const express  = require('express');
 const router = express.Router();
 const path = require('path');
 const multer = require('multer');
+const isAuthenticate = require('../config/authenticate');
 const fs = require('fs');
 
 // Generate a random number to name
@@ -14,9 +15,10 @@ const storage = multer.diskStorage({
     },
      filename: function(req, file, cb){
          cb(null, name() + file.originalname);
-         console.log(file);
+        //  console.log(file);
      }
  });
+//  const option = req.file ? storage : 'uploads/product_image.jpg';
 
 const fileFilter = (req, file, cb)=>{
     //reject a file
@@ -42,6 +44,7 @@ router.get('/', (req, res)=>{
         var context = {
             products: products.map(product => {
                 return {
+                    id: product.id,
                     name: product.pdt_name,
                     price: product.pdt_price,
                     scheme: product.pdt_scheme,
@@ -59,6 +62,7 @@ router.get('/fitness', (req, res)=>{
         var context = {
             products: products.map(product => {
                 return {
+                    id: product.id,
                     name: product.pdt_name,
                     price: product.pdt_price,
                     scheme: product.pdt_scheme,
@@ -76,6 +80,7 @@ router.get('/machinery', (req, res)=>{
         var context = {
             products: products.map(product => {
                 return {
+                    id: product.id,
                     name: product.pdt_name,
                     price: product.pdt_price,
                     scheme: product.pdt_scheme,
@@ -93,6 +98,7 @@ router.get('/furniture', (req, res)=>{
         var context = {
             products: products.map(product => {
                 return {
+                    id: product.id,
                     name: product.pdt_name,
                     price: product.pdt_price,
                     scheme: product.pdt_scheme,
@@ -110,6 +116,7 @@ router.get('/electronics', (req, res)=>{
         var context = {
             products: products.map(product => {
                 return {
+                    id: product.id,
                     name: product.pdt_name,
                     price: product.pdt_price,
                     scheme: product.pdt_scheme,
@@ -122,12 +129,12 @@ router.get('/electronics', (req, res)=>{
 })
 
 //product list access by admin with full right to edit and delete
-router.get('/list', (req, res)=>{
+router.get('/list', isAuthenticate, (req, res)=>{
     Product.find((err, products)=>{
         var context = {
             products: products.map(product => {
-                const displayYear = () => {
-                   return `${product.entry_date.getDate()} - ${product.entry_date.getMonth()} - ${product.entry_date.getFullYear()}` };
+                // const displayYear = () => {
+                //    return `${product.entry_date.getDate()} - ${product.entry_date.getMonth()} - ${product.entry_date.getFullYear()}` };
                 return {
                     id: product._id,
                     serial: product.serial_no,
@@ -135,7 +142,7 @@ router.get('/list', (req, res)=>{
                     category: product.pdt_category,
                     price: product.pdt_price,
                     scheme: product.pdt_scheme,
-                    entry: displayYear()                  
+                    entry: product.entry_date                  
                 }
             })
         }
@@ -146,17 +153,17 @@ router.get('/list', (req, res)=>{
 //product list access by staff/ agent with search and viewing right //Pending
 
 //Serving the product create page
-router.get('/new', (req, res)=>{
+router.get('/new', isAuthenticate, (req, res)=>{
     res.render('new_product', {title: "New Product"})
 })
 
 //Creating new product done by admin, and editing
-router.post('/new', upload.single('pdt_image'), async (req, res)=>{
+router.post('/new', isAuthenticate, upload.single('pdt_image'), async (req, res)=>{
     // End working on image
     const product = new Product();
     product.pdt_name = req.body.pdt_name;
     product.make = req.body.make; 
-    product.entry_date = req.body.entry_date; 
+    product.entry_date = Date.now(); 
     product.pdt_category = req.body.pdt_category;
     product.serial_no = req.body.serial_no;
     product.pdt_color = req.body.pdt_color;
@@ -166,7 +173,7 @@ router.post('/new', upload.single('pdt_image'), async (req, res)=>{
     product.pdt_scheme = req.body.pdt_scheme
     product.pdt_image = req.file.path;
     product.pdt_desc = req.body.pdt_desc;
-    console.log(req.file.path);
+    // console.log(req.file.path);
     try {
        await product.save((err)=>{
             if(err){
@@ -182,7 +189,7 @@ router.post('/new', upload.single('pdt_image'), async (req, res)=>{
 })
 
 //update product route
-router.get('/view/:id', (req, res)=>{
+router.get('/view/:id', isAuthenticate, (req, res)=>{
     let query = req.params.id;
     Product.findById(query, (err, product)=>{
         if(err) {
@@ -202,7 +209,7 @@ router.get('/view/:id', (req, res)=>{
 //to be workedon today
 
 //deleting a product, done by admin
-router.get('/delete/:id', async (req, res)=>{
+router.get('/delete/:id', isAuthenticate , async (req, res)=>{
     let query = req.params.id;
     Product.findByIdAndRemove(query, (err, product)=>{
         if(err){
@@ -217,7 +224,5 @@ router.get('/delete/:id', async (req, res)=>{
         }
     })
 })
-//deleting multiple products done by admin also
-
 
 module.exports = router

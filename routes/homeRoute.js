@@ -10,6 +10,7 @@ router.get('/', (req, res)=>{
         var context = {
             products: products.map(product => {
                 return {
+                    id: product.id,
                     name: product.pdt_name,
                     price: product.pdt_price,
                     scheme: product.pdt_scheme,

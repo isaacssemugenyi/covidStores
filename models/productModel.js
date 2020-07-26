@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const productSchema = mongoose.Schema({
     pdt_name : { type: String, required: true },
     make: { type: String, required: true, min: 2, max: 2 },
-    entry_date : { type: Date, default: Date.now() },
+    entry_date : { type: Date },
     pdt_category: { type: String, required: true },
     serial_no: { type: String, unique: true, required: true, min: 6, max: 22 },
     pdt_color: {type: String},

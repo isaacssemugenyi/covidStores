@@ -39,12 +39,18 @@ block content
                             fieldset.client-register-detail.mb-2
                                 //- legend Product Data
                                 div.form-row
-                                    div.form-group.col-md-6
+                                    div.form-group.col-md-5
                                         label(for="eid") Employee ID
                                         input(type="text" name="eid").form-control#eid
-                                    div.form-group.col-md-6
+                                    div.form-group.col-md-5
                                         label(for="nid") National ID
-                                        input(type="text" name="nid").form-control#nid       
+                                        input(type="text" name="nid").form-control#nid
+                                    div.form-group.col-md-2
+                                        label(for="role") Select role
+                                        select.form-control#role(name="role")
+                                            each role in roles
+                                                option(value=role.role) #{role.role}
+            
                                 div.form-row
                                     div.form-group.col-md-6
                                         label(for="password") Create a Password

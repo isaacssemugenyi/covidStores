@@ -3,13 +3,20 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
-
-
 const staffRegister = require('../models/staffModel');
+const StaffRoles = require('../models/roleModel')
 
 //New staff route
-router.get('/new', (req, res)=>{
-    res.render('new_staff', {title: "New Staff"})
+router.get('/new', async (req, res)=>{
+    try {
+        await StaffRoles.find((err, roles)=>{
+            if(err) throw err;
+            res.render('new_staff', {title: "New Staff", roles: roles})
+        }).sort({"_id":-1})
+    } catch(error){
+        console.log(err);
+    }
+    
 })
 
 //Staff list route

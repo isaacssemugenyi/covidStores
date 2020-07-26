@@ -11,6 +11,7 @@ const config = require('./config/db');
 
 //instantiations
 const app = express();
+app.locals.moment = require('moment'); //Moment for date formating and global variable
 app.set('view engine', 'pug'); //Using pug engine
 app.set('views', './views');
 
@@ -59,6 +60,11 @@ app.use('/client', clientRoutes)
 app.use('/staff', staffRoutes)
 app.use('/product', productRoutes)
 app.use('/admin', adminRoutes)
+
+//mising routes
+app.get('*', (req, res)=>{
+  res.render('error');
+})
 
 //Listening to port
 app.listen(3000, ()=>{console.log('Server started on port 3000')});

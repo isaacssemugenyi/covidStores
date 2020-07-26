@@ -26,11 +26,11 @@ block content
                                         label(for="make") Make
                                         input.form-control#make(type="text" name="make" maximum="2")
                                     div.form-group.col-md-4
-                                        label(for="entry_daye") Date of Entry
-                                        input.form-control#entry_date(type="date" name="entry_date")
+                                        label(for="pdt_color") Product Color
+                                        input.form-control#pdt_color(type="text" name="pdt_color")
 
                                 div.form-row
-                                    div.form-group.col-md-4
+                                    div.form-group.col-md-8
                                         label(for="pdt_category") Category
                                         select.form-control#pdt_category(name="pdt_category")
                                             option(value="" selected disabled) Select category
@@ -42,9 +42,6 @@ block content
                                     div.form-group.col-md-4
                                         label(for="serial_no") Serial Number
                                         input.form-control#serial_no(type="text" name="serial_no")
-                                    div.form-group.col-md-4
-                                        label(for="pdt_color") Product Color
-                                        input.form-control#pdt_color(type="text" name="pdt_color")
                                         
                             fieldset.client-register-detail.mb-2
                                 //- legend Product Data
@@ -62,18 +59,19 @@ block content
                                             option(value="cash") Cash
                                             option(value="monthly") Monthly
                                             option(value="quartery") Quartery
-                                        
-                                div.form-row
-                                    div.form-group.col-md-4
-                                        label(for="pdt_stock") Number in stock
-                                        input.form-control#pdt_stock(type="number" name="pdt_stock")
                                     div.form-group.col-md-4
                                         label(for="pdt_scheme") Product Scheme
                                         select.form-control#pdt_scheme(name="pdt_scheme")
                                             option(value="" selected disabled) Product Scheme
                                             option(value="LTPP") LTPP
                                             option(value="normal") Normal
+                                        
+                                div.form-row
                                     div.form-group.col-md-4
+                                        label(for="pdt_stock") Number in stock
+                                        input.form-control#pdt_stock(type="number" name="pdt_stock")
+                                    
+                                    div.form-group.col-md-8
                                         label(for="pdt_image") Select Image
                                         input.form-control#pdt_image(type="file" name="pdt_image" accept="image/*")
                                 div.form-row
@@ -83,6 +81,9 @@ block content
                                 
 
                             button(type="submit").btn.btn-block Create a product
+                            script(src="/ckeditor/ckeditor.js")
+                            script
+                                | CKEDITOR.replace('pdt_desc')
                             
                             //- End product registration form 
                 

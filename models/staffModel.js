@@ -18,6 +18,7 @@ const registerSchema = mongoose.Schema({
         type: String,
         unique: true
     },
+    role: String,
     password: {
         type: String, 
         required: true

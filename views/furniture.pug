@@ -13,9 +13,12 @@ block content
             img.product-img(alt="products" src=product.image)
             button.bag-btn Ugx. #{product.price}
             div.detail
-              h3= product.name
+              h3
+                strong= product.name
               if product.scheme == "LTPP"
                 h4= product.scheme
+              span 
+                a(href="/product/more/"+product.id) &#8594;
               //- End single product        
   //- End main container
   //- Footer 
