@@ -13,7 +13,7 @@ router.get('/', isAuthenticate, (req, res)=>{
     res.render('admin_panel', {
         title: "Admin Panel", 
         count: count,
-        username: req.user.fname,
+        fname: req.user.fname,
         role: req.user.role
     })
 })

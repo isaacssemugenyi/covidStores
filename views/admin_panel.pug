@@ -39,13 +39,14 @@ block content
             div.border.admin-pills.py-1
               p
                 strong No. of Clients
-              small= username
+              small= fname
 
           div.col-xs-6.col-sm-4.col-md-2.mb-2
             div.border.admin-pills.py-1
               p
-                strong Claims
-              small= role
+                strong(style="color: blue;") Logged as #{role}
+              h6(style="color: blue;")
+                strong= fname
         //- End Admin pills
 
         //- Next main admin div

@@ -19,7 +19,8 @@ block content
               th(scope="col") Scheme
               th(scope="col") Created
               th(scope="col") More
-              th(scope="col") Delete
+              if user.role === "Admin"
+                th(scope="col") Delete
           
           tbody
             //- Products
@@ -34,9 +35,10 @@ block content
                 td
                   a(href="/product/view/" +product.id role="button" title="View more").btn.btn-warning.py-1.px-2
                     i.icon-home.fa-sm
-                td
-                  a(href="/product/delete/"+product.id role="button" onclick="return confirm('Do you want to remove this document?')").btn.btn-danger.py-1.px-2
-                    i.icon-trash.fa-sm
+                if user.role === "Admin"
+                  td
+                    a(href="/product/delete/"+product.id role="button" onclick="return confirm('Do you want to remove this document?')").btn.btn-danger.py-1.px-2
+                      i.icon-trash.fa-sm
                       
             //- End Products
           //- End products table

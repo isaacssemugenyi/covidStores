@@ -19,10 +19,33 @@ nav.navbar.navbar-expand-lg.navbar-light#nav-bg
                 a.nav-link(href="/product/machinery") Machinery
             li.nav-item(class=(title == 'Fitness' ? 'change' : ''))
                 a.nav-link(href="/product/fitness") Fitness
+            //- User Links
+            div.d-block.d-lg-none.d-xl-none
+                if user
+                    if user.role === "Admin"
+                        li.nav-item(class=(title == 'Admin Panel' ? 'change' : ''))
+                            a.nav-link(href="/admin") Admin Panel
+                        li.nav-item(class=(title == 'New Staff' ? 'change' : ''))
+                            a.nav-link(href="/staff/new") New Agent
+                        li.nav-item(class=(title == 'Staff List' ? 'change' : ''))
+                            a.nav-link(href="/staff/list") Staff List
+                        li.nav-item(class=(title == 'New Product' ? 'change' : ''))
+                            a.nav-link(href="/product/new") New Product
+                        li.nav-item(class=(title == 'Product List' ? 'change' : ''))
+                            a.nav-link(href="/product/list") Product List
+                    else
+                        li.nav-item(class=(title == 'Admin Panel' ? 'change' : ''))
+                            a.nav-link(href="/admin") Admin Panel
+                        li.nav-item(class=(title == 'Product List' ? 'change' : ''))
+                            a.nav-link(href="/product/list") Product List
+                        li.nav-item(class=(title == 'New Client' ? 'change' : ''))
+                            a.nav-link(href="/client/register") New client
             
         //- Left button
         form.form-inline.my-2.my-lg-0
             if user
+                div.d-none.d-lg-block
+                    a.btn.my-2.my-sm-0(href="/admin" role="button" style="background: white; color: #eb612a; font-weight: bold; font-size: 15px; margin-right: 20px;") Panel
                 a.btn.my-2.my-sm-0(href="/staff/logout" role="button" style="background: white; color: #eb612a; font-weight: bold; font-size: 15px;") Logout
             else
                 a.btn.my-2.my-sm-0(href="/staff/login" role="button" style="background: white; color: #eb612a; font-weight: bold; font-size: 15px;") Staff LogIn

@@ -3,6 +3,7 @@ const router = express.Router();
 const path = require('path');
 const multer = require('multer');
 const isAuthenticate = require('../config/authenticate');
+const { isAuthorized } = require('../config/access');
 const fs = require('fs');
 
 // Generate a random number to name
@@ -153,12 +154,12 @@ router.get('/list', isAuthenticate, (req, res)=>{
 //product list access by staff/ agent with search and viewing right //Pending
 
 //Serving the product create page
-router.get('/new', isAuthenticate, (req, res)=>{
+router.get('/new', isAuthenticate, isAuthorized , (req, res)=>{
     res.render('new_product', {title: "New Product"})
 })
 
 //Creating new product done by admin, and editing
-router.post('/new', isAuthenticate, upload.single('pdt_image'), async (req, res)=>{
+router.post('/new', isAuthenticate, isAuthorized ,upload.single('pdt_image'), async (req, res)=>{
     // End working on image
     const product = new Product();
     product.pdt_name = req.body.pdt_name;
@@ -209,7 +210,7 @@ router.get('/view/:id', isAuthenticate, (req, res)=>{
 //to be workedon today
 
 //deleting a product, done by admin
-router.get('/delete/:id', isAuthenticate , async (req, res)=>{
+router.get('/delete/:id', isAuthenticate , isAuthorized , async (req, res)=>{
     let query = req.params.id;
     Product.findByIdAndRemove(query, (err, product)=>{
         if(err){
