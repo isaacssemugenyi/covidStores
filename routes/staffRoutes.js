@@ -1,13 +1,19 @@
+//Requiring middleware
 const express  = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
+//Authentication and Authorization middleware
+const isAuthenticate = require('../config/authenticate');
+const { isAuthorized } = require('../config/access');
+
+//
 const staffRegister = require('../models/staffModel');
-const StaffRoles = require('../models/roleModel')
+const StaffRoles = require('../models/roleModel');
 
 //New staff route
-router.get('/new', async (req, res)=>{
+router.get('/new', isAuthenticate , isAuthorized ,async (req, res)=>{
     try {
         await StaffRoles.find((err, roles)=>{
             if(err) throw err;
@@ -20,12 +26,12 @@ router.get('/new', async (req, res)=>{
 })
 
 //Staff list route
-router.get('/list', (req, res)=>{
+router.get('/list', isAuthenticate , isAuthorized , (req, res)=>{
     res.render('staff_list', {title: "Staff List"})
 })
 
 // New staff members
-router.post('/new', async(req, res)=>{
+router.post('/new', isAuthenticate , isAuthorized , async(req, res)=>{
     const staff = new staffRegister();
     staff.fname = req.body.fname;
     staff.lname = req.body.lname;
@@ -34,6 +40,7 @@ router.post('/new', async(req, res)=>{
     staff.phone = req.body.phone;
     staff.eid = req.body.eid;
     staff.nid = req.body.nid;
+    staff.role = req.body.role;
     staff.password = req.body.password;
     //staff.c_password = req.body.c_password;
 

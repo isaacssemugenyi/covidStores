@@ -17,66 +17,62 @@ block content
                             h3.text-center Client Registration/ Purchase Form
                             //- Personal data
                             fieldset.client-register-detail.mb-2
-                                legend Personal Data
+                                //- legend 
                                 div.form-row
-                                    div.form-group.col-md-8
-                                        label(for="fname") Full Name
-                                        input.form-control#fname(type="text")
+                                    div.form-group.col-md-5
+                                        label(for="cname") Full Name
+                                        input.form-control#cname(type="text" name="cname")
                                     div.form-group.col-md-4
-                                        label(for="national_id") National ID
-                                        input.form-control#national_id(type="text")
+                                        label(for="clocation") Location
+                                        input.form-control#national_id(type="text" name="clocation")
+                                    div.form-group.col-md-3
+                                        label(for="cphone") Phone Number
+                                        input.form-control#phone(type="number", name="cphone", min="100000000")
 
                                 div.form-row
                                     div.form-group.col-md-4
-                                        label(for="phone") Phone Number
-                                        input.form-control#phone(type="text")
+                                        label(for="cemail") Email Address
+                                        input.form-control#cemail(type="email", name="cemail")
                                     div.form-group.col-md-4
-                                        label(for="email") Email Address
-                                        input.form-control#email(type="email")
+                                        label(for="cinitialPay") Initial Pay
+                                        input.form-control#cinitialPay(type="number", name="cinitialPay")
                                     div.form-group.col-md-4
-                                        label(for="location") Physical Address
-                                        input.form-control#location(type="text")
+                                        label(for="cnid") National ID
+                                        input.form-control#cnid(type="text", name="cnid")
                             //- End personal data
 
                             //-  Product data
                             fieldset.client-register-detail.mb-2
-                                legend Product Data
+                                //- legend Product Data
                                 div.form-row
                                     div.form-group.col-md-4
-                                        label(for="item-name") Product Name
-                                        input(type="text").form-control#item-name
+                                        label(for="citemName") Item Name
+                                        input(type="text" name="citemName").form-control#citemName
                                     div.form-group.col-md-4
-                                        label(for="serial-no") Serial Number
-                                        input(type="text").form-control#serial-no
+                                        label(for="itemSerial") Item Serial Number
+                                        input(type="text", name="itemSerial").form-control#itemSerial
                                     div.form-group.col-md-4
-                                        label(for="purchase-receipt") Purchase Receipt
-                                        input(type="text").form-control#purchase-receipt   
+                                        label(for="nextPayDate") Next Date of Pay 
+                                        input(type="date" name="nextPayDate").form-control#nextPayDate   
                                 div.form-row
-                                    div.form-group.col-md-4
-                                        label(for="tot-price") Total Price
-                                        input(type="text").form-control#tot-price
-                                    div.form-group.col-md-4
-                                        label(for="initial-pay") Initial Pay
-                                        input(type="text").form-control#initial-pay
-                                    div.form-group.col-md-4
-                                        label(for="pay-date") Date of Pay
-                                        input(type="date").form-control#pay-date
-                                div.form-row
-                                    div.form-group.col-md-4
-                                        label(for="next-pay") Next Payment Amount
-                                        input(type="text").form-control#next-pay
-                                    div.form-group.col-md-4
-                                        label(for="next-date") Next Payment Date
-                                        input(type="date").form-control#next-date
-                                    div.form-group.col-md-4
-                                        label(for="ref-num") Referee Number
-                                        input(type="text").form-control#ref-num
-                                        small Already existing client
+                                    div.form-group.col-md-6
+                                        label(for="nextPayAmt") Next Pay Amount
+                                        input(type="number" name="nextPayAmt").form-control#nextPayAmt
+                                    div.form-group.col-md-6
+                                        label(for="refereeNo") Referee Number
+                                        select.form-control#refereeNo(name="refereeNo")
+                                            option(value="" disabled, selected) Referee Number
+                                            //- option(value="#{client.refereeNo}") #{client.refereeNo}
+                                            option(value="home") Home
+                                            option(value="goat") Goat
+                                            option(value="rat") Rat
+                                            option(value="pineapple") Pineapple
+                                         
                             //- End product data 
 
-                            button(type="submit").btn.btn-block Register Client
+                            button(type="submit").btn.btn-block Purchase Product
                             
-                            //- End client registration form 
+                            //- End client product purchase form 
                 
 
     //- End main container 
