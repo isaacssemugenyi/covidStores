@@ -9,7 +9,7 @@ module.exports.isAuthorized  = function(req, res, next) {
               return next();  
           } else {
             req.flash('danger', 'Not Authorized')
-            res.redirect('back');
+            res.redirect('/admin');
           }
       }
   });

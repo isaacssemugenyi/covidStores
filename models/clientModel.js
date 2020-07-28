@@ -19,7 +19,8 @@ const purchaseSchema = mongoose.Schema({
     dateOfPay : {type: Date, default: new Date},//automatic
     nextPayDate: { type: Date },
     nextPayAmt: {type: String},
-    refereeNo: {type: String } 
+    refereeNo: {type: String },
+    crefNo: {type: String}
 })
 // purchaseReceipt:
 module.exports = mongoose.model('client_purchase', purchaseSchema)

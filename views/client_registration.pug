@@ -13,7 +13,7 @@ block content
                     div.col-md-8.offset-md-2
                         //- Client registration form
                         //- Handle scroll with css of this section
-                        form.my-4.register
+                        form.my-4.register(action="/client/register", method="POST")
                             h3.text-center Client Registration/ Purchase Form
                             //- Personal data
                             fieldset.client-register-detail.mb-2
@@ -62,11 +62,9 @@ block content
                                         label(for="refereeNo") Referee Number
                                         select.form-control#refereeNo(name="refereeNo")
                                             option(value="" disabled, selected) Referee Number
-                                            //- option(value="#{client.refereeNo}") #{client.refereeNo}
-                                            option(value="home") Home
-                                            option(value="goat") Goat
-                                            option(value="rat") Rat
-                                            option(value="pineapple") Pineapple
+                                            each client in clients
+                                                option(value="#{client.crefNo}") #{client.crefNo}
+                                            
                                          
                             //- End product data 
 

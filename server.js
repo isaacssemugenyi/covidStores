@@ -15,20 +15,19 @@ app.locals.moment = require('moment'); //Moment for date formating and global va
 app.set('view engine', 'pug'); //Using pug engine
 app.set('views', './views');
 
-mongoose.connect(config.database, { useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.connect(config.database, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
 
 const homeRoute = require('./routes/homeRoute')
 const adminRoutes = require('./routes/adminRoutes')
 const clientRoutes = require('./routes/clientRoutes')
 const productRoutes = require('./routes/productRoutes')
 const staffRoutes = require('./routes/staffRoutes');
-const { Mongoose } = require('mongoose');
+// const { Mongoose } = require('mongoose');
 
 //configurations
 app.use('/uploads', express.static('uploads'));
 app.use('/product/uploads', express.static('uploads'));
 
-//http://localhost:3000/uploads/
 app.use(express.static(path.join(__dirname , 'public'))); //Using static files
 app.use(express.urlencoded({extended: true})) // Accessing form data
 
@@ -42,9 +41,8 @@ app.use(function (req, res, next) {
   next();
 });
 
-//Passport Config
-require('./config/passport')(passport);
-//Passport middleware
+//Passport Config and middleware
+require('./config/passport')(passport); 
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -61,7 +59,7 @@ app.use('/staff', staffRoutes)
 app.use('/product', productRoutes)
 app.use('/admin', adminRoutes)
 
-//mising routes
+//Mising routes
 app.get('*', (req, res)=>{
   res.render('error');
 })
