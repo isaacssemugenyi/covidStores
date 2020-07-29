@@ -27,7 +27,10 @@ router.get('/new', isAuthenticate , isAuthorized ,async (req, res)=>{
 
 //Staff list route
 router.get('/list', isAuthenticate , isAuthorized , (req, res)=>{
-    res.render('staff_list', {title: "Staff List"})
+    staffRegister.find((err, members)=>{
+        if(err) throw err;
+        res.render('staff_list', {title: "Staff List", members : members})
+    })
 })
 
 // New staff members

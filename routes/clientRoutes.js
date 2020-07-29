@@ -4,17 +4,23 @@ const router = express.Router();
 const isAuthenticate = require('../config/authenticate');
 const { adminDenied } = require('../config/access')
 const ClientSale = require('../models/clientModel')
+const Product = require('../models/productModel');
 
 //Generating a Random Reference number on register
 var options = { "min":5, "max":7, "capsWithNumbers":true }
 const customerReference = 'CS-' + generator.random(options);
 
 // Default route
-router.get('/register', isAuthenticate , adminDenied , (req, res)=>{
-    ClientSale.find((err, clients)=>{
-        if(err) throw err;
-        res.render('client_registration', {title: "New Client", clients: clients})
-    })
+router.get('/register', isAuthenticate , adminDenied , async(req, res)=>{
+    try{
+        const products = await Product.find((err, products)=> products);
+        await ClientSale.find((err, clients)=>{
+            if(err) throw err;
+            res.render('client_registration', {title: "New Client", clients: clients, products: products})
+        })
+    } catch(err){
+        console.log(err);
+    }
 })
 
 // A post route for client registration and purchase registered by agent
@@ -31,14 +37,13 @@ router.post('/register', isAuthenticate, adminDenied, async(req, res)=>{
     customer.dateOfPay = req.body.dateOfPay
     customer.nextPayDate = req.body.nextPayDate
     customer.nextPayAmt = req.body.nextPayAmt
-    customer.refereeNo = req.body.refereeNo //Save it from the body (automatically generated)
-    customer.crefNo = customerReference //Save automatically generated number
+    customer.refereeNo = req.body.refereeNo 
+    customer.crefNo = customerReference 
     
     // post data to db
     try{
-       await customer.save((err, result) => {
+       await customer.save((err) => {
             if(err) throw err;
-            console.log(result);
             req.flash('success', 'Product sold')
             // Redirect to single page for buy and receipt print
             res.redirect('/client/register')

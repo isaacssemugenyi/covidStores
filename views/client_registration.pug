@@ -47,10 +47,18 @@ block content
                                 div.form-row
                                     div.form-group.col-md-4
                                         label(for="citemName") Item Name
-                                        input(type="text" name="citemName").form-control#citemName
+                                        input(list="citemNames" name="citemName").form-control#citemName
+                                        datalist(id="citemNames")
+                                            each product in products
+                                                option(value=product.pdt_name)
+                                        
                                     div.form-group.col-md-4
                                         label(for="itemSerial") Item Serial Number
-                                        input(type="text", name="itemSerial").form-control#itemSerial
+                                        input(list="itemSerials" name="itemSerial").form-control#itemSerial
+                                        datalist(id="itemSerials")
+                                            each product in products
+                                                option(value=product.serial_no)
+
                                     div.form-group.col-md-4
                                         label(for="nextPayDate") Next Date of Pay 
                                         input(type="date" name="nextPayDate").form-control#nextPayDate   
@@ -60,10 +68,10 @@ block content
                                         input(type="number" name="nextPayAmt").form-control#nextPayAmt
                                     div.form-group.col-md-6
                                         label(for="refereeNo") Referee Number
-                                        select.form-control#refereeNo(name="refereeNo")
-                                            option(value="" disabled, selected) Referee Number
+                                        input(list="refereeNos" name="refereeNo").form-control#refereeNo
+                                        datalist(id="refereeNos")
                                             each client in clients
-                                                option(value="#{client.crefNo}") #{client.crefNo}
+                                                option(value=client.crefNo)
                                             
                                          
                             //- End product data 

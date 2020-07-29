@@ -8,60 +8,53 @@ block content
                 include include/staff_sidebar 
 
             div.col-md-12.col-lg-10
-                .row.ml-1
-                    .col-xs-6.col-sm-4.col-md-3.py-2.pl-2.pr-2
-                        //- Staff list
-                        div.card#staff-card
-                            img.card-img-top(src="/img/noimage.jpg" alt="...")
-                            div.card-body
-                                h5.card-title Card title
-                                a.btn.btn-warning(href="#")
-                                    i.icon-edit
+                //- Staff table
+                table.table.table-hover.table-bordered.table-sm#product-table
+                    thead.thead.covid-table.text-primary
+                        tr
+                        th(scope="col") Employee ID
+                        th(scope="col") First Name
+                        th(scope="col") Username
+                        th(scope="col") Email
+                        th(scope="col") Phone
+                        th(scope="col") Role
+                        th(scope="col") Edit
+                        th(scope="col") Delete
 
-                    .col-xs-6.col-sm-4.col-md-3.py-2.pl-2.pr-2   
-                        //- Staff list
-                        div.card#staff-card
-                            img.card-img-top(src="/img/noimage.jpg" alt="...")
-                            div.card-body
-                                h5.card-title Card title
-                                a.btn.btn-warning(href="#")
-                                    i.icon-edit
+                    tbody
+                        //- Staff
+                        each staff in members
+                            tr
+                                td #{staff.eid}
+                                td #{staff.fname}
+                                td #{staff.username}
+                                td #{staff.email}
+                                td #{staff.phone}
+                                td #{staff.role}
+                                td
+                                    a(href="/staff/edit/" +staff.id role="button" title="Edit").btn.btn-warning.py-1.px-2
+                                        i.icon-pencil.fa-sm
+                                td
+                                    a(href="/staff/delete/"+staff.id role="button" title="Delete" onclick="return confirm('This employee will be deleted permanently. Do you agree?')").btn.btn-danger.py-1.px-2
+                                        i.icon-trash.fa-sm
 
-                    .col-xs-6.col-sm-4.col-md-3.py-2.pl-2.pr-2
-                        //- Staff list
-                        div.card#staff-card
-                            img.card-img-top(src="/img/noimage.jpg" alt="...")
-                            div.card-body
-                                h5.card-title Card title
-                                a.btn.btn-warning(href="#")
-                                    i.icon-edit
 
-                    .col-xs-6.col-sm-4.col-md-3.py-2.pl-2.pr-2
-                        //- Staff list
-                        div.card#staff-card
-                            img.card-img-top(src="/img/noimage.jpg" alt="...")
-                            div.card-body
-                                h5.card-title Card title
-                                a.btn.btn-warning(href="#")
-                                    i.icon-edit
 
-                    .col-xs-6.col-sm-4.col-md-3.py-2.pl-2.pr-2
-                        //- Staff list
-                        div.card#staff-card
-                            img.card-img-top(src="/img/noimage.jpg" alt="...")
-                            div.card-body
-                                h5.card-title Card title
-                                a.btn.btn-warning(href="#")
-                                    i.icon-edit
 
-                    .col-xs-6.col-sm-4.col-md-3.py-2.pl-2.pr-2   
-                        //- Staff list
-                        div.card#staff-card
-                            img.card-img-top(src="/img/noimage.jpg" alt="...")
-                            div.card-body
-                                h5.card-title Card title
-                                a.btn.btn-warning(href="#")
-                                    i.icon-edit
+
+
+
+                    //- .col-xs-6.col-sm-4.col-md-3.py-2.pl-2.pr-2
+                    //-     //- Staff list
+                    //-     div.card#staff-card
+                    //-         img.card-img-top(src="/img/noimage.jpg" alt="...")
+                    //-         div.card-body
+                    //-             h5.card-title Card title
+                    //-             a.btn.btn-warning(href="#")
+                    //-                 i.icon-edit
+
+                   
+                   
 
     
         
