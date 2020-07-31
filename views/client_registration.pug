@@ -13,7 +13,7 @@ block content
                     div.col-md-8.offset-md-2
                         //- Client registration form
                         //- Handle scroll with css of this section
-                        form.my-4.register(action="/client/register", method="POST")
+                        form.my-4.register(action="/client/register", method="POST", novalidate, name="clientForm", onsubmit="return clientForm()")
                             h3.text-center Client Registration/ Purchase Form
                             //- Personal data
                             fieldset.client-register-detail.mb-2
@@ -22,23 +22,29 @@ block content
                                     div.form-group.col-md-5
                                         label(for="cname") Full Name
                                         input.form-control#cname(type="text" name="cname")
+                                        small(class="error" id="cnameErr")
                                     div.form-group.col-md-4
                                         label(for="clocation") Location
-                                        input.form-control#national_id(type="text" name="clocation")
+                                        input.form-control#clocation(type="text" name="clocation")
+                                        small(class="error" id="clocationErr")
                                     div.form-group.col-md-3
                                         label(for="cphone") Phone Number
                                         input.form-control#phone(type="number", name="cphone", min="100000000")
+                                        small(class="error" id="cphoneErr")
 
                                 div.form-row
                                     div.form-group.col-md-4
                                         label(for="cemail") Email Address
                                         input.form-control#cemail(type="email", name="cemail")
+                                        small(class="error" id="cemailErr")
                                     div.form-group.col-md-4
                                         label(for="cinitialPay") Initial Pay
                                         input.form-control#cinitialPay(type="number", name="cinitialPay")
+                                        small(class="error" id="cpayErr")
                                     div.form-group.col-md-4
                                         label(for="cnid") National ID
                                         input.form-control#cnid(type="text", name="cnid")
+                                        small(class="error" id="cnidErr")
                             //- End personal data
 
                             //-  Product data
@@ -47,31 +53,36 @@ block content
                                 div.form-row
                                     div.form-group.col-md-4
                                         label(for="citemName") Item Name
-                                        input(list="citemNames" name="citemName").form-control#citemName
+                                        input(list="citemNames" name="citemName", autocomplete="off").form-control#citemName
                                         datalist(id="citemNames")
                                             each product in products
                                                 option(value=product.pdt_name)
+                                        small(class="error" id="citemNameErr")
                                         
                                     div.form-group.col-md-4
                                         label(for="itemSerial") Item Serial Number
-                                        input(list="itemSerials" name="itemSerial").form-control#itemSerial
+                                        input(list="itemSerials" name="itemSerial", autocomplete="off").form-control#itemSerial
                                         datalist(id="itemSerials")
                                             each product in products
                                                 option(value=product.serial_no)
+                                        small(class="error" id="citemSerialErr")
 
                                     div.form-group.col-md-4
                                         label(for="nextPayDate") Next Date of Pay 
-                                        input(type="date" name="nextPayDate").form-control#nextPayDate   
+                                        input(type="date" name="nextPayDate").form-control#nextPayDate
+                                        small(class="error" id="cnextDateErr")   
                                 div.form-row
                                     div.form-group.col-md-6
                                         label(for="nextPayAmt") Next Pay Amount
                                         input(type="number" name="nextPayAmt").form-control#nextPayAmt
+                                        small(class="error" id="cnextPayErr")
                                     div.form-group.col-md-6
                                         label(for="refereeNo") Referee Number
                                         input(list="refereeNos" name="refereeNo").form-control#refereeNo
                                         datalist(id="refereeNos")
                                             each client in clients
                                                 option(value=client.crefNo)
+                                        small(class="error" id="cRefErr")
                                             
                                          
                             //- End product data 

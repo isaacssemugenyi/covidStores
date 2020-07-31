@@ -12,73 +12,88 @@ block content
                     div.col-md-8.offset-md-2
                         //- Client registration form
                         //- Handle scroll with css of this section
-                        form.my-4.register#new_product(action="/product/new" method="POST" enctype="multipart/form-data")
+                        form.my-4.register#productForm(action="/product/new" method="POST" enctype="multipart/form-data", novalidate, name="newProduct" onsubmit="return productForm()")
                             h3.text-center Product Form
-                            //- Personal data
                             //- input(type="hidden")
                             fieldset.client-register-detail.mb-2
                                 //- legend Personal Data
                                 div.form-row
                                     div.form-group.col-md-4
                                         label(for="pdt-name") Product Name
-                                        input.form-control#pdt-name(type="text" name="pdt_name")
+                                        input.form-control#pdt-name(type="text", name="pdt_name", data-value-missing="Translate('Required')", required)
+                                        small(class="error" id="nameErr")
+
                                     div.form-group.col-md-4
                                         label(for="make") Make
-                                        input.form-control#make(type="text" name="make" maximum="2")
+                                        input.form-control#make(type="text" name="make", minLength="2", maxLength="2" required)
+                                        small(class="error" id="makeErr")
+
                                     div.form-group.col-md-4
                                         label(for="pdt_color") Product Color
-                                        input.form-control#pdt_color(type="text" name="pdt_color")
+                                        input.form-control#pdt_color(type="text" name="pdt_color" required)
+                                        small(class="error" id="colorErr")
 
                                 div.form-row
                                     div.form-group.col-md-8
                                         label(for="pdt_category") Category
-                                        select.form-control#pdt_category(name="pdt_category")
+                                        select.form-control#pdt_category(name="pdt_category", required)
                                             option(value="" selected disabled) Select category
                                             option(value="furniture") Furniture
                                             option(value="electronics") Electronics
                                             option(value="fitness") Fitness
                                             option(value="machinery") Machinery
                                             option(value="other") Others
+                                        small(class="error" id="categoryErr")
+
                                     div.form-group.col-md-4
                                         label(for="serial_no") Serial Number
-                                        input.form-control#serial_no(type="text" name="serial_no")
-                                        
+                                        input.form-control#serial_no(type="text" name="serial_no", required, minLength="6", maxLength="22")
+                                        small(class="error" id="serialErr")
+
                             fieldset.client-register-detail.mb-2
                                 //- legend Product Data
                                 div.form-row
                                     div.form-group.col-md-4
                                         label(for="pdt_price") Product Price
-                                        input(type="number" name="pdt_price").form-control#pdt_price
+                                        input(type="number" name="pdt_price", required).form-control#pdt_price
+                                        small(class="error" id="priceErr")
+
                                     //- div.form-group.col-md-4
                                     //-     label(for="initial_pay") Initial Pay
                                     //-     input(type="number").form-control#initial_pay
                                     div.form-group.col-md-4
                                         label(for="pay_interval") Payment Interval
-                                        select.form-control#pay_interval(name="pay_interval")
+                                        select.form-control#pay_interval(name="pay_interval", required)
                                             option(value="" selected disabled) Payment interval
                                             option(value="cash") Cash
                                             option(value="monthly") Monthly
                                             option(value="quartery") Quartery
+                                        small(class="error" id="intervalErr")
+
                                     div.form-group.col-md-4
                                         label(for="pdt_scheme") Product Scheme
-                                        select.form-control#pdt_scheme(name="pdt_scheme")
+                                        select.form-control#pdt_scheme(name="pdt_scheme", required)
                                             option(value="" selected disabled) Product Scheme
                                             option(value="LTPP") LTPP
                                             option(value="normal") Normal
+                                        small(class="error" id="schemeErr")
                                         
                                 div.form-row
                                     div.form-group.col-md-4
                                         label(for="pdt_stock") Number in stock
-                                        input.form-control#pdt_stock(type="number" name="pdt_stock")
-                                    
+                                        input.form-control#pdt_stock(type="number" name="pdt_stock", required)
+                                        small(class="error" id="stockErr")
+                                        
                                     div.form-group.col-md-8
                                         label(for="pdt_image") Select Image
-                                        input.form-control#pdt_image(type="file" name="pdt_image" accept="image/*")
+                                        input.form-control#pdt_image(type="file" name="pdt_image" accept="image/*", required)
+                                        small(class="error" id="imageErr")
+
                                 div.form-row
                                     div.form-group.col-md-12
                                         label(for="pdt_desc") Describe the product
                                         textarea#pdt_desc(name="pdt_desc", cols="10", rows="2").form-control
-                                
+
 
                             button(type="submit").btn.btn-block Create a product
                             script(src="/ckeditor/ckeditor.js")

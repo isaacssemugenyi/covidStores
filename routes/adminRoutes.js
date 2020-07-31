@@ -10,10 +10,13 @@ const ClientSale = require('../models/clientModel') //Client buy model
 //Admin_panel route
 router.get('/', isAuthenticate, async (req, res)=>{
   try{
+    // Number of staff
       const staff = await StaffRegister.countDocuments((err, staffCount) => staffCount);
+      // Number of clients
       const client = await ClientSale.countDocuments((err, clientCount) => clientCount);
+      
       const products =  Product.countDocuments({}, (err, count) => {
-        //   const staff = Staff.count({}, staff => staff)   
+   
         res.render('admin_panel', {
             title: "Admin Panel", 
             count: count,
