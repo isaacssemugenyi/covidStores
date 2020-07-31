@@ -181,7 +181,8 @@ router.post('/new', isAuthenticate, isAuthorized ,upload.single('pdt_image'), as
                 console.log(err)
             } else {
                 req.flash('success','Product Created')
-                res.render('new_product')
+                res.redirect('/product/new')
+                // res.render('new_product')
             }
         })
     } catch(err){
