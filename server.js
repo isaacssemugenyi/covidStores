@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname , 'public'))); //Using static files
 app.use(express.urlencoded({extended: true})) // Accessing form data
 
 // Express session middleware
-app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }))
+app.use(session({ secret: 'mostsecretwordeverseen', resave: true, saveUninitialized: true }))
 
 // Express messages middleware
 app.use(require('connect-flash')());

@@ -268,3 +268,16 @@ footer {
     top: 0;
     right: 30%;
 }
+
+/* new product table */
+#newProduct input:valid {
+    border-bottom: 1px solid blue;
+}
+#newProduct input:invalid {
+    border-bottom: 1px solid red;
+}
+
+/* Error styling for product form */
+.error {
+    color: red;
+}
