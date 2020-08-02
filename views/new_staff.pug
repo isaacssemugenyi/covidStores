@@ -12,7 +12,7 @@ block content
                     div.col-md-8.offset-md-2
                         //- Client registration form
                         //- Handle scroll with css of this section
-                        form.my-4.register(action="/staff/new" method="POST")
+                        form.my-4.register#agentForm(action="/staff/new" method="POST", name="agentForm")
                             h3.text-center Agent Registration Form
                             //- Personal data
                             input(type="hidden")
@@ -22,19 +22,28 @@ block content
                                     div.form-group.col-md-6
                                         label(for="fname") First Name
                                         input.form-control#fname(type="text" name="fname")
+                                        small(class="error" id="firstErr")
+
                                     div.form-group.col-md-6
                                         label(for="lname") Last Name
                                         input.form-control#make(type="text" name="lname")
+                                        small(class="error" id="lastErr")
+
                                 div.form-row
                                     div.form-group.col-md-4
                                         label(for="username") Username
                                         input.form-control#username(type="text" name="username")
+                                        small(class="error" id="userErr")
+
                                     div.form-group.col-md-4
                                         label(for="email") Email
                                         input.form-control#email(type="text" name="email")
+                                        small(class="error" id="emailErr")
+
                                     div.form-group.col-md-4
                                         label(for="phone") Phone Number
                                         input.form-control#phone(type="number" name="phone")
+                                        small(class="error" id="phoneErr")
                 
                             fieldset.client-register-detail.mb-2
                                 //- legend Product Data
@@ -42,22 +51,30 @@ block content
                                     div.form-group.col-md-5
                                         label(for="eid") Employee ID
                                         input(type="text" name="eid").form-control#eid
+                                        small(class="error" id="eidErr")
+
                                     div.form-group.col-md-5
                                         label(for="nid") National ID
                                         input(type="text" name="nid").form-control#nid
+                                        small(class="error" id="nidErr")
+
                                     div.form-group.col-md-2
                                         label(for="role") Select role
                                         select.form-control#role(name="role")
                                             each role in roles
                                                 option(value=role.role) #{role.role}
+                                        small(class="error" id="roleErr")
             
                                 div.form-row
                                     div.form-group.col-md-6
                                         label(for="password") Create a Password
                                         input.form-control#password(type="password" name="password")
+                                        small(class="error" id="passErr")
+
                                     div.form-group.col-md-6
                                         label(for="c_password") Confirm Password
-                                        input.form-control#c_password(type="password" name="c_password")                                
+                                        input.form-control#c_password(type="password" name="c_password")
+                                        small(class="error" id="c_passErr")                                
 
                             button(type="submit").btn.btn-block Create Agent
                             
