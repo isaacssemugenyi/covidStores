@@ -17,8 +17,8 @@ router.get('/', isAuthenticate, async (req, res)=>{
       
       const products =  Product.countDocuments({}, (err, count) => {
    
-        res.render('admin_panel', {
-            title: "Admin Panel", 
+        res.render('staff_panel', {
+            title: "Staff Panel", 
             count: count,
             staff: staff,
             client : client,

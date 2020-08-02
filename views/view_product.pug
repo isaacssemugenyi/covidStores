@@ -9,65 +9,76 @@ block content
 
             div.col-md-12.col-lg-10
                 div.row
-                    div.col-md-8.offset-md-2
+                    div.col-md-8.offset-md-2.bg-light
                         form.my-4
                             h3.text-center Product Details
                             //- Personal data
-                            .mb-2
+                            .mb-1
                                 div.form-row
-                                    div.form-group.col-md-4
-                                        label
-                                            strong Product Name
-                                        p= product.pdt_name
-                                    div.form-group.col-md-4
-                                        label
-                                            strong Make
-                                        p= product.make
-                                    div.form-group.col-md-4
-                                        label 
-                                            strong Category
-                                        p= product.pdt_category
-
+                                    div.form-group.col-md-5
+                                        img(src=product.pdt_image, width=250, height=290)
+                                    .form-group.col-md-7
+                                        .row
+                                            .col-md-4
+                                                label
+                                                    strong Product Name :
+                                            .col-md-8
+                                                p= product.pdt_name
+                                        .row
+                                            .col-md-4
+                                                label
+                                                    strong Make :
+                                            .col-md-8
+                                                p= product.make     
+                                        .row
+                                            .col-md-4
+                                                label 
+                                                    strong Category :
+                                            .col-md-8
+                                                p= product.pdt_category
+                                        .row
+                                            .col-md-4
+                                                label
+                                                    strong Color :
+                                            .col-md-8
+                                                p= product.pdt_color
+                                        .row
+                                            .col-md-4
+                                                label
+                                                    strong Price :
+                                            .col-md-8
+                                                p= product.pdt_price
+                                        .form-row
+                                            .col-md-4
+                                                label
+                                                    strong Pay Interval :
+                                            .col-md-8
+                                                p= product.pay_interval
+                                        .row
+                                            .col-md-4
+                                                label
+                                                    strong No. in Stock :
+                                            .col-md-8
+                                                p= product.pdt_stock
+                                        .row
+                                            .col-md-4
+                                                label
+                                                    strong Pdt Scheme :
+                                            .col-md-8
+                                                p= product.pdt_scheme
                                 div.form-row
-                                    div.form-group.col-md-4
-                                        label
-                                            strong Color
-                                        p= product.pdt_color
-                                    div.form-group.col-md-4
-                                        label
-                                            strong Price
-                                        p= product.pdt_price
-                                    div.form-group.col-md-4
-                                        label
-                                            strong Payment Interval
-                                        p= product.pay_interval
-                                        
-                                    div.form-group.col-md-4
-                                        label
-                                            strong Number in Stock
-                                        p= product.pdt_stock
-                                    div.form-group.col-md-4
-                                        label
-                                            strong Product Scheme
-                                        p= product.pdt_scheme
-                                    div.form-group.col-md-4
-                                        label
-                                            strong Product Image
-                                        p= product.pdt_image
-                                        
-                                div.form-row
-                                    div.form-group.col-md-4
+                                    div.form-group.col-md-12
                                         label
                                             strong Product Description
                                         p= product.pdt_desc
+                                .form-row.d-flex.justify-content-around.bg-light.py-2                                     
+                                    a(href="/product/edit/"+product._id role="button").btn.btn-warning
+                                        i.icon-pencil
+                                            span.pl-1 Edit
                                     
-                            a(href="/product/edit/"+product._id role="button").btn.btn-warning
-                                i.icon-pencil
-                                    span.pl-1 Edit
-                            
-                            a(href="/product/list" role="button").btn.btn-success.ml-3
-                                i.icon-pencil
-                                    span.pl-1 Done
+                                    a(href="/product/list" role="button").btn.btn-success.ml-3
+                                        i.icon-pencil
+                                            span.pl-1 Done
                             
                             //- End product registration form 
                 

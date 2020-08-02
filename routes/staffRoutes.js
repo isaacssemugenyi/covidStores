@@ -71,6 +71,61 @@ router.post('/new', isAuthenticate , isAuthorized , async(req, res)=>{
     }
 })
 
+//GET staff edit form
+router.get('/edit/:id', isAuthenticate, isAuthorized, (req, res)=>{
+    let query = req.params.id;
+    staffRegister.findById(query, (err, staff)=>{
+        if(err) {
+            console.log(err);
+        } else {
+            res.render('edit_staff', {
+                    title: "Edit Staff",
+                    staff: staff
+                }
+            )
+        }
+    })
+})
+
+//POST: Update the database
+router.post('/edit/:id', isAuthenticate, isAuthorized, (req, res)=>{
+    let id = req.params.id;
+    staffRegister.findOne({_id : id}, (err, staff)=>{
+        if(err) {
+            throw err
+        } else {
+            if(!staff){
+                res.json('Staff Not Found')
+            }else {
+                req.body.fname != "" ? staff.fname = req.body.fname : staff.fname;
+                req.body.lname != "" ? staff.lname = req.body.lname : staff.lname;
+                req.body.username != "" ? staff.username = req.body.username : staff.username;
+                req.body.email != "" ? staff.email = req.body.email : staff.email;
+                req.body.phone !="" ? staff.phone = req.body.phone : staff.phone;
+                req.body.eid != "" ? staff.eid = req.body.eid : staff.eid;
+                req.body.nid != "" ? staff.nid = req.body.nid : staff.nid;
+                req.body.role != "" ? staff.role = req.body.role : staff.role;
+               
+                staff.save((err)=>{
+                    err ? console.log(err) : res.redirect('/staff/list');
+                })
+            }
+        }
+    })
+})
+
+// /staff/delete/"+staff.id
+router.get('/delete/:id', isAuthenticate , isAuthorized ,async (req, res)=>{
+    let query = req.params.id;
+    staffRegister.findByIdAndRemove(query, (err)=>{
+        if(err){
+            console.log(err);
+        }else {
+            req.flash('succces', "Staff deleted");
+            res.redirect('/staff/list');
+        }
+    })
+})
 
 // Login page route
 router.get('/login', (req, res)=>{

@@ -2,6 +2,7 @@ const express  = require('express');
 const router = express.Router();
 const path = require('path');
 const multer = require('multer');
+const mongoose = require('mongoose');
 const isAuthenticate = require('../config/authenticate');
 const { isAuthorized } = require('../config/access');
 const fs = require('fs');
@@ -174,7 +175,7 @@ router.post('/new', isAuthenticate, isAuthorized ,upload.single('pdt_image'), as
     product.pdt_scheme = req.body.pdt_scheme
     product.pdt_image = req.file.path;
     product.pdt_desc = req.body.pdt_desc;
-    // console.log(req.file.path);
+
     try {
        await product.save((err)=>{
             if(err){
@@ -206,11 +207,54 @@ router.get('/view/:id', isAuthenticate, (req, res)=>{
     })
 })
 
+//update product route
+router.get('/edit/:id', isAuthenticate, isAuthorized, (req, res)=>{
+    let query = req.params.id;
+    Product.findById(query, (err, product)=>{
+        if(err) {
+            console.log(err);
+        } else {
+            res.render('edit_product', 
+            {
+                title: "Edit Product",
+                product: product
+            }
+            )
+        }
+    })
+})
+
 //Product Edit route, done by admin
-//to be workedon today
+router.post('/edit/:id', isAuthenticate, isAuthorized, (req, res)=>{
+    let id = req.params.id;
+    Product.findOne({_id : id}, (err, product)=>{
+        if(err) {
+            throw err
+        } else {
+            if(!product){
+                res.json('Product Not Found')
+            }else {
+                req.body.pdt_name != "" ? product.pdt_name = req.body.pdt_name : product.pdt_name;
+                req.body.make != "" ? product.make = req.body.make : product.make;
+                req.body.pdt_category != "" ? product.pdt_category = req.body.pdt_category : product.pdt_category;
+                req.body.serial_no != "" ? product.serial_no = req.body.serial_no : product.serial_no;
+                req.body.pdt_color !="" ? product.pdt_color = req.body.pdt_color : product.pdt_color;
+                req.body.pdt_price != "" ? product.pdt_price = req.body.pdt_price : product.pdt_price;
+                req.body.pdt_interval != "" ? product.pdt_interval = req.body.pdt_interval : product.pdt_interval;
+                req.body.pdt_stock != "" ? product.pdt_stock = req.body.pdt_stock : product.pdt_stock;
+                req.body.pdt_scheme != "" ? product.pdt_stock = req.body.pdt_stock : product.pdt_stock;
+                req.body.pdt_desc ? product.pdt_desc = req.body.pdt_desc : product.pdt_desc;
+
+                product.save((err)=>{
+                    err ? console.log(err) : res.redirect('/product/view/'+id);
+                })
+            }
+        }
+    })
+})
 
 //deleting a product, done by admin
-router.get('/delete/:id', isAuthenticate , isAuthorized , async (req, res)=>{
+router.get('/delete/:id', isAuthenticate , isAuthorized ,async (req, res)=>{
     let query = req.params.id;
     Product.findByIdAndRemove(query, (err, product)=>{
         if(err){

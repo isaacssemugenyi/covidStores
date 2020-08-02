@@ -1,0 +1,78 @@
+extends layout
+block content
+    //-  Main container
+    div.container-fluid
+        div.row
+            div.d-none.col-lg-2.d-lg-block#admin-list
+
+                include include/staff_sidebar 
+
+            div.col-md-12.col-lg-10
+                div.row
+                    div.col-md-8.offset-md-2
+                        //- Client registration form
+                        //- Handle scroll with css of this section
+                        form.my-4.register(action="/staff/edit/"+staff.id, method="POST")
+                            h3.text-center Agent Registration Form
+                            //- Personal data
+                            input(type="hidden")
+                            fieldset.client-register-detail.mb-2
+                                //- legend Personal Data
+                                .form-row
+                                    .form-group.col-md-4
+                                        label(for="fname")
+                                            strong First Name :
+                                    .form-group.col-md-8
+                                        input.form-control#fname(type="text" name="fname", value=staff.fname)
+                                .form-row
+                                    .form-group.col-md-4
+                                        label(for="lname")
+                                            strong Last Name :
+                                    .form-group.col-md-8
+                                        input.form-control#make(type="text" name="lname", value=staff.lname)
+                                        
+                                .form-row
+                                    .form-group.col-md-4
+                                        label(for="username") 
+                                            strong Username :
+                                    .form-group.col-md-8
+                                        input.form-control#username(type="text" name="username", value=staff.username)
+                                .form-row
+                                    .form-group.col-md-4
+                                        label(for="email") 
+                                            strong Email :
+                                    .form-group.col-md-8
+                                        input.form-control#email(type="text" name="email", value=staff.email)
+                                .form-row
+                                    .form-group.col-md-4
+                                        label(for="phone") 
+                                            strong Phone Number :
+                                    .form-group.col-md-8
+                                        input.form-control#phone(type="number" name="phone", value=staff.phone)
+                                .form-row
+                                    .form-group.col-md-4
+                                        label(for="eid") 
+                                            strong Employee ID :
+                                    .form-group.col-md-8
+                                        input(type="text" name="eid", value=staff.eid).form-control#eid
+                                .form-row
+                                    .form-group.col-md-4
+                                        label(for="nid") 
+                                            strong National ID
+                                    .form-group.col-md-8
+                                        input(type="text" name="nid", value=staff.nid).form-control#nid
+                                .form-row
+                                    .form-group.col-md-4
+                                        label(for="role") 
+                                            strong Select role :
+                                    .form-group.col-md-8
+                                        select.form-control#role(name="role")
+                                            option(value=staff.role, selected, disabled) #{staff.role}
+                                            option(value="Agent") Agent
+                                            option(value="Admin") Admin                            
+                            button(type="submit").btn.btn-block Create Agent
+                            
+                            //- End Sales Registration form 
+                
+
+    //- End main container

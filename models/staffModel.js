@@ -24,8 +24,7 @@ const registerSchema = mongoose.Schema({
         enum: ["Agent", "Admin"] 
     },
     password: {
-        type: String, 
-        required: true
+        type: String
     },
     // c_password: {
     //    type: String,

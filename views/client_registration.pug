@@ -13,7 +13,7 @@ block content
                     div.col-md-8.offset-md-2
                         //- Client registration form
                         //- Handle scroll with css of this section
-                        form.my-4.register(action="/client/register", method="POST", novalidate, name="clientForm", onsubmit="return clientForm()")
+                        form.my-4.register#clientForm(action="/client/register", method="POST", novalidate, name="clientForm", onsubmit="return clientForm()")
                             h3.text-center Client Registration/ Purchase Form
                             //- Personal data
                             fieldset.client-register-detail.mb-2
@@ -87,7 +87,7 @@ block content
                                          
                             //- End product data 
 
-                            button(type="submit").btn.btn-block Purchase Product
+                            button(type="submit",onsubmit="return clientForm()").btn.btn-block Purchase Product
                             
                             //- End client product purchase form 
                 

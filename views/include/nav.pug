@@ -1,7 +1,7 @@
 nav.navbar.navbar-expand-lg.navbar-light#nav-bg 
     //- Logo section
     a.navbar-brand(href="#") 
-        img(src="/img/logo_bar.png", alt="" style="width:85px; height: 30px;")
+        img(src="/img/logo_bar.png", alt="")
     button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
         span.navbar-toggler-icon
     //- Nav links
@@ -23,8 +23,8 @@ nav.navbar.navbar-expand-lg.navbar-light#nav-bg
             div.d-block.d-lg-none.d-xl-none
                 if user
                     if user.role === "Admin"
-                        li.nav-item(class=(title == 'Admin Panel' ? 'change' : ''))
-                            a.nav-link(href="/admin") Admin Panel
+                        li.nav-item(class=(title == 'Staff Panel' ? 'change' : ''))
+                            a.nav-link(href="/admin") Staff Panel
                         li.nav-item(class=(title == 'New Staff' ? 'change' : ''))
                             a.nav-link(href="/staff/new") New Agent
                         li.nav-item(class=(title == 'Staff List' ? 'change' : ''))
@@ -33,9 +33,11 @@ nav.navbar.navbar-expand-lg.navbar-light#nav-bg
                             a.nav-link(href="/product/new") New Product
                         li.nav-item(class=(title == 'Product List' ? 'change' : ''))
                             a.nav-link(href="/product/list") Product List
+                        li.py-2(class=(title == 'Transaction' ? 'active-section' : ''))
+                            a.pl-1.py-2(href="/product/transactions") View Transactions
                     else
-                        li.nav-item(class=(title == 'Admin Panel' ? 'change' : ''))
-                            a.nav-link(href="/admin") Admin Panel
+                        li.nav-item(class=(title == 'Staff Panel' ? 'change' : ''))
+                            a.nav-link(href="/admin") Staff Panel
                         li.nav-item(class=(title == 'Product List' ? 'change' : ''))
                             a.nav-link(href="/product/list") Product List
                         li.nav-item(class=(title == 'New Client' ? 'change' : ''))
@@ -45,8 +47,8 @@ nav.navbar.navbar-expand-lg.navbar-light#nav-bg
         form.form-inline.my-2.my-lg-0
             if user
                 div.d-none.d-lg-block
-                    a.btn.my-2.my-sm-0(href="/admin" role="button" style="background: white; color: #eb612a; font-weight: bold; font-size: 15px; margin-right: 20px;") Panel
-                a.btn.my-2.my-sm-0(href="/staff/logout" role="button" style="background: white; color: #eb612a; font-weight: bold; font-size: 15px;") Logout
+                    a.btn.my-2.my-sm-0.btn-access#btn-pushed(href="/admin" role="button") Panel
+                    a.btn.my-2.my-sm-0.btn-access(href="/staff/logout" role="button") Logout
             else
-                a.btn.my-2.my-sm-0(href="/staff/login" role="button" style="background: white; color: #eb612a; font-weight: bold; font-size: 15px;") Staff LogIn
+                a.btn.my-2.my-sm-0.btn-access(href="/staff/login" role="button") Staff LogIn
                 
