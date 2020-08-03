@@ -15,7 +15,12 @@ app.locals.moment = require('moment'); //Moment for date formating and global va
 app.set('view engine', 'pug'); //Using pug engine
 app.set('views', './views');
 
-mongoose.connect(config.database, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
+mongoose.connect(config.database, { 
+  useUnifiedTopology: true, 
+  useNewUrlParser: true, 
+  useCreateIndex: true,
+  useFindAndModify: false 
+});
 
 const homeRoute = require('./routes/homeRoute')
 const adminRoutes = require('./routes/adminRoutes')

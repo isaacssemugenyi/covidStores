@@ -13,19 +13,21 @@ router.get('/', isAuthenticate, async (req, res)=>{
     // Number of staff
       const staff = await StaffRegister.countDocuments((err, staffCount) => staffCount);
       // Number of clients
-      const client = await ClientSale.countDocuments((err, clientCount) => clientCount);
-      
-      const products =  Product.countDocuments({}, (err, count) => {
-   
-        res.render('staff_panel', {
-            title: "Staff Panel", 
-            count: count,
-            staff: staff,
-            client : client,
-            fname: req.user.fname,
-            role: req.user.role
+      const clientTotal = await ClientSale.countDocuments((err, clientCount) => clientCount);
+      // Product total
+      const products =  await Product.countDocuments((err, count) => count)
+
+      ClientSale.find({}, (err, clients) => {
+        res.render('staff_panel', { 
+          title: "Staff Panel", 
+          count: products, 
+          staff: staff, 
+          client : clientTotal, 
+          fname: req.user.fname, 
+          role: req.user.role,
+          clients : clients
         })
-    })
+      });
   } catch(err){
     throw err;
   }

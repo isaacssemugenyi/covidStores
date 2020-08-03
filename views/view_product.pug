@@ -16,7 +16,7 @@ block content
                             .mb-1
                                 div.form-row
                                     div.form-group.col-md-5
-                                        img(src=product.pdt_image, width=250, height=290)
+                                        img.img-fluid(src=product.pdt_image, width=250, height=290)
                                     .form-group.col-md-7
                                         .row
                                             .col-md-4
@@ -71,13 +71,14 @@ block content
                                         label
                                             strong Product Description
                                         p= product.pdt_desc
-                                .form-row.d-flex.justify-content-around.bg-light.py-2                                     
-                                    a(href="/product/edit/"+product._id role="button").btn.btn-warning
-                                        i.icon-pencil
-                                            span.pl-1 Edit
+                                .form-row.d-flex.justify-content-around.bg-light.py-2
+                                    if user.role == "Admin"                                     
+                                        a(href="/product/edit/"+product._id role="button").btn.btn-warning
+                                            i.icon-pencil
+                                                span.pl-1 Edit
                                     
                                     a(href="/product/list" role="button").btn.btn-success.ml-3
-                                        i.icon-pencil
+                                        i.icon-lock
                                             span.pl-1 Done
                             
                             //- End product registration form 

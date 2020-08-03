@@ -49,29 +49,41 @@ block content
                 strong= fname
         //- End Admin pills
 
-        //- Next main admin div
-        div.row.mt-1.pt-2.mr-2
-          //- Middle section
-          div.col-md-8
-          //- info to the middle section missing here
+        //- Table Division
+        .row.mt-1.pt-2.mr-2
+          .col-md-12
+            h3.text-center.pt-1.pb-3
+              b Client Transactions
+            //- Products table
+            table.table.table-hover.table-bordered.table-sm#product-table
+              thead.thead.covid-table.text-primary
+                tr
+                  th(scope="col") Name
+                  th(scope="col") Item
+                  th(scope="col") Initial Pay (Ugx)
+                  th(scope="col") Phone
+                  //- th(scope="col") Email
+                  //- th(scope="col") Nat ID
+                  th(scope="col") Client No
+                  th(scope="col") Ref No
+                  
+              tbody
+                //- Products
+                each client in clients
+                  tr
+                    td #{client.cname}
+                    td #{client.citemName}
+                    td #{client.cinitialPay}.00
+                    td #{client.cphone}
+                    //- td #{client.cemail}
+                    //- td #{client.cnid}
+                    td #{client.crefNo}
+                    td #{client.refereeNo}
+                          
+        //- End table division
 
-          //- End Middle section
-          //- Sidebar
-          div.col-md-4
-            div.row.px-2.py-2
-              div.col-md-12.mb-2.admin-pills
-                p
-                  | Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta eum 
-                  | cupiditate placeat reprehenderit impedit? Doloribus, accusantium!
-                  | quibusdam culpa cupiditate optio magni. Numquam atque enim, est fugiat 
-               
-              div.col-md-12.admin-pills
-                p
-                  | Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta eum 
-                  | quibusdam culpa cupiditate optio magni. Numquam atque enim, est fugiat 
-                  | cupiditate placeat reprehenderit impedit? Doloribus, accusantium!
-              
-          //- End Sidebar 
+        //- Next main admin div
+        
         //- End next main admin div  
       //- End admin design
   //- End main container 

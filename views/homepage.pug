@@ -9,8 +9,8 @@ block content
       each product in context.products
         article.product
           div.img-container
-            img.product-img(alt="products" src=product.image)
-            button.bag-btn Ugx. #{product.price}
+            img.product-img(alt="products" src=product.image, style="max-height: 70px;")
+            button.bag-btn Ugx. #{product.price}.00
             div.detail
               h3
                 strong= product.name

@@ -2,18 +2,20 @@ extends layout
 block content
     //- Login Container
     div#login
-        form(action="/staff/login" method="post")
+        form#staffLogin(action="/staff/login" method="post")
             h3 Staff Login
             div.form-grouped
-                input(type="text" placeholder="Enter Username" name="username")
-                small Error
-
-            div.form-grouped
-                input(type="password" placeholder="Type Password" name="password")
-                small Error
+                input#user(type="text" placeholder="Enter Username" name="username")
 
             div.form-group
-                input#pass-show(type="checkbox") 
+                input#user-hide(type="checkbox", onchange="return hideUser();") 
+                label(style="margin-left: 10px;") Hide username
+
+            div.form-grouped
+                input#pass(type="password" placeholder="Type Password" name="password")
+
+            div.form-group
+                input#pass-show(type="checkbox", onchange="return showPass();") 
                 label(style="margin-left: 10px;") Show password
 
             button.btn.btn-block(type="submmit") Log In
