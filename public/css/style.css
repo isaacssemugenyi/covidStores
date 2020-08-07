@@ -1,3 +1,7 @@
+/* HTML Smooth scroll */
+html {
+	scroll-behavior: smooth;
+  }
 /* Navbar */
 #nav-bg {
     background-color: #eb612a;
@@ -40,7 +44,7 @@
     overflow: hidden;
     transition: all 0.3s linear;
 }
-.bag-btn {
+/* .bag-btn {
     position: absolute;
     top: 60%;
     right: 0;
@@ -54,7 +58,7 @@
     font-weight: bold;
     cursor: pointer;
     color: #fff;
-}
+} */
 
 .product-img {
     display: block;
@@ -72,17 +76,21 @@
 }
 .product .detail {
     background-color: #e0d7d7;
-    display: flex;
+    /* display: flex; */
     width: 100%;
+    height: 100%;
     padding: .3rem;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     letter-spacing: 0.3rem;
 }
-.product .detail h3 {
+.product .detail h6 span {
     text-transform: capitalize;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
 }
-.product .detail h4 { color: #eb612a; }
+.product .detail .prod { 
+    color: #eb612a;
+    font-size: 20px;
+}
 /* End products */
 /* Footer */
 footer {
@@ -298,3 +306,25 @@ nav a img{
     width:85px; 
     height: 30px;
 }
+
+/* Scroll Button */
+#scrollBtn {
+	display: none;
+	position: fixed;
+	bottom: 20px;
+	right: 30px;
+	z-index: 99; 
+	border: none; 
+	outline: none; 
+	background-color: rgba(92, 70, 70, .7);
+	color: white; 
+	cursor: pointer; 
+	padding: 10px; 
+	border-radius: 50px; 
+	font-size: 25px; 
+  }
+  
+  #scrollBtn:hover {
+	background-color: #555;
+  }
+/* End Scroll Button */
