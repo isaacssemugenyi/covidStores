@@ -50,7 +50,9 @@ router.get('/', (req, res)=>{
                     name: product.pdt_name,
                     price: product.pdt_price,
                     scheme: product.pdt_scheme,
-                    image: product.pdt_image
+                    image: product.pdt_image,
+                    serial: product.serial_no,
+                    payplan: product.pay_interval
                 }
             })
         }
@@ -68,7 +70,9 @@ router.get('/fitness', (req, res)=>{
                     name: product.pdt_name,
                     price: product.pdt_price,
                     scheme: product.pdt_scheme,
-                    image: product.pdt_image
+                    image: product.pdt_image,
+                    serial: product.serial_no,
+                    payplan: product.pay_interval
                 }
             })
         }
@@ -86,7 +90,9 @@ router.get('/machinery', (req, res)=>{
                     name: product.pdt_name,
                     price: product.pdt_price,
                     scheme: product.pdt_scheme,
-                    image: product.pdt_image
+                    image: product.pdt_image,
+                    serial: product.serial_no,
+                    payplan: product.pay_interval
                 }
             })
         }
@@ -104,7 +110,9 @@ router.get('/furniture', (req, res)=>{
                     name: product.pdt_name,
                     price: product.pdt_price,
                     scheme: product.pdt_scheme,
-                    image: product.pdt_image
+                    image: product.pdt_image,
+                    serial: product.serial_no,
+                    payplan: product.pay_interval
                 }
             })
         }
@@ -122,7 +130,9 @@ router.get('/electronics', (req, res)=>{
                     name: product.pdt_name,
                     price: product.pdt_price,
                     scheme: product.pdt_scheme,
-                    image: product.pdt_image
+                    image: product.pdt_image,
+                    serial: product.serial_no,
+                    payplan: product.pay_interval
                 }
             })
         }
@@ -190,8 +200,8 @@ router.post('/new', isAuthenticate, isAuthorized ,upload.single('pdt_image'), as
     }
 })
 
-//update product route
-router.get('/view/:id', isAuthenticate, (req, res)=>{
+//User View product route
+router.get('/view/:id', isAuthenticate , (req, res)=>{
     let query = req.params.id;
     Product.findById(query, (err, product)=>{
         if(err) {
@@ -200,6 +210,23 @@ router.get('/view/:id', isAuthenticate, (req, res)=>{
             res.render('view_product', 
             {
                 title: "View Product",
+                product: product
+            }
+            )
+        }
+    })
+})
+
+//Customer View product route
+router.get('/views/:id', (req, res)=>{
+    let query = req.params.id;
+    Product.findById(query, (err, product)=>{
+        if(err) {
+            console.log(err);
+        } else {
+            res.render('product_view_customer', 
+            {
+                title: "Customer Product",
                 product: product
             }
             )

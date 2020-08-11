@@ -28,7 +28,7 @@
       } else {
           //Check of letters
           var regex = /^[A-z]*$/;
-          if(regex.test(firstame) === false){
+          if(regex.test(firstname) === false){
               agentError("firstErr", "Name should be letters");
           }else {
               agentError("firstErr", "");
@@ -42,7 +42,7 @@
     } else {
         //Check of letters
         var regex = /^[A-z]*$/;
-        if(regex.test(lastame) === false){
+        if(regex.test(lastname) === false){
             agentError("lastErr", "Name should be letters");
         }else {
             agentError("lastErr", "");
@@ -165,7 +165,7 @@
         
         //Checking password match
         if(password_2 == "") {
-            agentError('c_passErr', 'Field can-t be empty')
+            agentError('c_passErr', 'Field can\'t be empty')
         } else {
             if(password_2 !== password){
                 agentError('c_passErr', 'Passwords do not match')

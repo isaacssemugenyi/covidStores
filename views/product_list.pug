@@ -33,8 +33,8 @@ block content
                 td #{product.scheme}
                 td #{moment(product.entry).format("DD-MM-YYYY (HH:MM:SS)")}
                 td
-                  a(href="/product/view/" +product.id role="button" title="View more").btn.btn-warning.py-1.px-2
-                    i.icon-home.fa-sm
+                  a(href="/product/view/" +product.id role="button" title="View more").btn.btn-primary.py-1.px-2
+                    i.fas.fa-arrow-alt-circle-right.fa-sm
                 if user.role === "Admin"
                   td
                     a(href="/product/delete/"+product.id role="button" onclick="return confirm('Do you want to remove this document?')").btn.btn-danger.py-1.px-2

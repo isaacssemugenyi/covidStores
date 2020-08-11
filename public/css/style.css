@@ -295,7 +295,17 @@ footer {
     background: white; 
     color: #eb612a; 
     font-weight: bold; 
+    font-size: 15px; 
+}
+.btn-access.ac {
+    background: #eb612a; 
+    color: #eb612a; 
+    font-weight: bold; 
     font-size: 15px;
+}
+.btn-access.ac:hover {
+    color: #eb612a;
+    background: white;
 }
 #btn-pushed {
     margin-right: 20px;
@@ -327,4 +337,6 @@ nav a img{
   #scrollBtn:hover {
 	background-color: #555;
   }
+
+  
 /* End Scroll Button */

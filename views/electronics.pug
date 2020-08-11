@@ -5,22 +5,35 @@ block content
   section.products
     div.section-title
       h2= title
-    div.products-center 
+    div.products-center
       //- Single product
       each product in context.products
         article.product
           div.img-container
             img.product-img(alt="products" src=product.image)
-            button.bag-btn Ugx. #{product.price}.00
+            //- button.bag-btn Ugx. #{product.price}.00
             div.detail
-              h3
-                strong= product.name
+              h6
+                strong Name : 
+                span(style="color:#eb612a;")= product.name
+              h6
+                strong Price :
+                span Ugx #{product.price}.00 
+              p
+                strong S/No :
+                span= product.serial
+              p(style="margin-top: -17px;")
+                strong Plan :
+                span(style="font-size: 22px;")= product.payplan
               if product.scheme == "LTPP"
-                h4= product.scheme
-              span 
-                a(href="/product/more/"+product.id) &#8594;
-              //- End single product           
+                span.prod
+                  strong= product.scheme 
+              span.prod
+                a.btn.btn-outline-warning(href="/product/views/" +product.id, title="More")
+                  i.fa.fa-hand-point-right.fa-lg
+                
+            //- End single product           
   //- End main container
   //- Footer 
   footer.mt-3
-    include include/footer.pug
+    include include/footer

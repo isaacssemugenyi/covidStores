@@ -1,6 +1,5 @@
 extends layout
 block content
- 
   //- Main container
   section.products
     div.section-title
@@ -11,14 +10,29 @@ block content
         article.product
           div.img-container
             img.product-img(alt="products" src=product.image)
-            button.bag-btn Ugx. #{product.price}.00
+            //- button.bag-btn #{product.price}.00 Ugx
             div.detail
-              h3
-                strong= product.name
-              h4= product.scheme
-              span 
-                a(href="/product/more/"+product.id) &#8594;
-              //- End single product           
+              h6 
+                strong Name : 
+                span(style="color:#eb612a;")= product.name
+              h6
+                strong Price :
+                span Ugx #{product.price}.00
+              p
+                strong S/No :
+                span= product.serial
+              p(style="margin-top: -17px;")
+                strong Plan :
+                span(style="font-size: 22px;")= product.payplan
+
+              if product.scheme == "LTPP"
+                span.prod
+                  strong= product.scheme
+              span.prod 
+                a.btn.btn-outline-warning(href="/product/views/" +product.id, title="More")
+                  i.fa.fa-hand-point-right.fa-lg
+            //- End single product 
+        //- End single product 
   //- End main container
   //- Footer 
   footer.mt-3

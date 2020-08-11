@@ -9,7 +9,7 @@ block content
       each product in context.products
         article.product
           div.img-container
-            img.product-img(alt="products" src=product.image, style="max-height: 70px;")
+            img.product-img(alt="products" src=product.image)
             //- button.bag-btn #{product.price}.00 Ugx
             div.detail
               h6 
@@ -29,8 +29,8 @@ block content
                 span.prod
                   strong= product.scheme
               span.prod 
-                a.btn.btn-success(href="/product/more/"+product.id) More
-                  i.fas.fa-hand-point-right
+                a.btn.hand(href="/product/views/" +product.id, title="More" style="background-color:orangered; color:white;")
+                  i.fa.fa-hand-point-right.fa-lg
             //- End single product 
         //- End single product 
   //- End main container

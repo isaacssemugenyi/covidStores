@@ -33,6 +33,7 @@ const staffRoutes = require('./routes/staffRoutes');
 app.use('/uploads', express.static('uploads'));
 app.use('/product/uploads', express.static('uploads'));
 app.use('/product/view/uploads', express.static('uploads'));
+app.use('/product/views/uploads', express.static('uploads'));
 
 app.use(express.static(path.join(__dirname , 'public'))); //Using static files
 app.use(express.urlencoded({extended: true})) // Accessing form data
