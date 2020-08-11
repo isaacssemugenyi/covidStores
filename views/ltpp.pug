@@ -18,18 +18,12 @@ block content
               h6
                 strong Price :
                 span Ugx #{product.price}.00
-              p
-                strong S/No :
-                span= product.serial
-              p(style="margin-top: -17px;")
-                strong Plan :
-                span(style="font-size: 22px;")= product.payplan
 
               if product.scheme == "LTPP"
                 span.prod
                   strong= product.scheme
-              span.prod 
-                a.btn.btn-outline-warning(href="/product/views/" +product.id, title="More")
+              span.prod.point
+                a.btn.hand(href="/product/views/" +product.id, title="More" style="background-color:orangered; color:white;")
                   i.fa.fa-hand-point-right.fa-lg
             //- End single product 
         //- End single product 

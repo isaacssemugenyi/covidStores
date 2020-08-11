@@ -42,7 +42,8 @@ html {
 .img-container {
     position: relative;
     overflow: hidden;
-    transition: all 0.3s linear;
+    transform: scale(1);
+    transition: all 0.5s linear;
 }
 /* .bag-btn {
     position: absolute;
@@ -70,9 +71,11 @@ html {
 .img-container:hover {
     box-shadow: inset 1px 1px 2px #eb612a,
                 -1px -1px 2px #eb612a;
+    border-radius: 25px;
 }
 .img-container:hover .product-img {
     opacity: 1;
+    transform: scale(1.03);
 }
 .product .detail {
     background-color: #e0d7d7;

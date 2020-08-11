@@ -53,10 +53,9 @@ block content
                                 div.form-row
                                     div.form-group.col-md-4
                                         label(for="citemName") Item Name
-                                        input(list="citemNames" name="citemName", autocomplete="off").form-control#citemName
-                                        datalist(id="citemNames")
+                                        select(name="citemName").form-control#citemName
                                             each product in products
-                                                option(value=product.pdt_name)
+                                                option(value=product.pdt_name)= product.pdt_name
                                         small(class="error" id="citemNameErr")
                                         
                                     div.form-group.col-md-4
