@@ -90,7 +90,7 @@
           if(regex.test(phone) === false){
               agentError("phoneErr", "Phone should be numbers");
           } else{
-              if(clientPhone.length < 9 || clientPhone.length > 12){
+              if(phone.length < 9 ||phone.length > 12){
                   agentError("phoneErr", "Phone should be 9 to 12 numbers ");
               }else{
                   agentError("phoneErr", "");

@@ -12,10 +12,9 @@ block content
                     div.col-md-8.offset-md-2
                         //- Client registration form
                         //- Handle scroll with css of this section
-                        form.my-4.register(action="/staff/edit/"+staff.id, method="POST")
+                        form.my-4.register#agentEdit(action="/staff/edit/"+staff.id, method="POST", name="agentEdit")
                             h3.text-center Agent Registration Form
                             //- Personal data
-                            input(type="hidden")
                             fieldset.client-register-detail.mb-2
                                 //- legend Personal Data
                                 .form-row
@@ -24,12 +23,14 @@ block content
                                             strong First Name :
                                     .form-group.col-md-8
                                         input.form-control#fname(type="text" name="fname", value=staff.fname)
+                                        small.error#firstEditErr
                                 .form-row
                                     .form-group.col-md-4
                                         label(for="lname")
                                             strong Last Name :
                                     .form-group.col-md-8
-                                        input.form-control#make(type="text" name="lname", value=staff.lname)
+                                        input.form-control#lname(type="text" name="lname", value=staff.lname)
+                                        small.error#lastEditErr
                                         
                                 .form-row
                                     .form-group.col-md-4
@@ -37,30 +38,35 @@ block content
                                             strong Username :
                                     .form-group.col-md-8
                                         input.form-control#username(type="text" name="username", value=staff.username)
+                                        small.error#userEditErr
                                 .form-row
                                     .form-group.col-md-4
                                         label(for="email") 
                                             strong Email :
                                     .form-group.col-md-8
                                         input.form-control#email(type="text" name="email", value=staff.email)
+                                        small.error#emailEditErr
                                 .form-row
                                     .form-group.col-md-4
                                         label(for="phone") 
                                             strong Phone Number :
                                     .form-group.col-md-8
                                         input.form-control#phone(type="number" name="phone", value=staff.phone)
+                                        small.error#phoneEditErr
                                 .form-row
                                     .form-group.col-md-4
                                         label(for="eid") 
                                             strong Employee ID :
                                     .form-group.col-md-8
                                         input(type="text" name="eid", value=staff.eid).form-control#eid
+                                        small.error#eIdEditErr
                                 .form-row
                                     .form-group.col-md-4
                                         label(for="nid") 
                                             strong National ID
                                     .form-group.col-md-8
                                         input(type="text" name="nid", value=staff.nid).form-control#nid
+                                        small.error#nIdEditErr
                                 .form-row
                                     .form-group.col-md-4
                                         label(for="role") 
@@ -69,8 +75,9 @@ block content
                                         select.form-control#role(name="role")
                                             option(value=staff.role, selected, disabled) #{staff.role}
                                             option(value="Agent") Agent
-                                            option(value="Admin") Admin                            
-                            button(type="submit").btn.btn-block Create Agent
+                                            option(value="Admin") Admin
+                                        small.error#roleEditErr                           
+                            button(type="submit").btn.btn-block Update Agent
                             
                             //- End Sales Registration form 
                 
