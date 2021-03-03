@@ -15,6 +15,8 @@ app.locals.moment = require('moment'); //Moment for date formating and global va
 app.set('view engine', 'pug'); //Using pug engine
 app.set('views', './views');
 
+const PORT = process.env.PORT || 3000;
+
 mongoose.connect(process.env.CONNECTIONSTRING, { 
   useUnifiedTopology: true, 
   useNewUrlParser: true, 
@@ -70,4 +72,4 @@ app.get('*', (req, res)=>{
 })
 
 //Listening to port
-app.listen(3000, ()=>{console.log('Server started on port 3000')});
+app.listen(PORT);
