@@ -25,11 +25,7 @@ const registerSchema = mongoose.Schema({
     },
     password: {
         type: String
-    },
-    // c_password: {
-    //    type: String,
-    //    required: true
-    // }
+    }
 })
 
 const Staff = mongoose.model('Staff', registerSchema);

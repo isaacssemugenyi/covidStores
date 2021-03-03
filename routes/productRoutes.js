@@ -2,9 +2,9 @@ const express  = require('express');
 const router = express.Router();
 const path = require('path');
 const multer = require('multer');
-const mongoose = require('mongoose');
 const isAuthenticate = require('../config/authenticate');
 const { isAuthorized } = require('../config/access');
+const cloudinary = require('../config/cloundinary');
 const fs = require('fs');
 
 // Generate a random number to name
@@ -12,15 +12,10 @@ const name = ()=> Math.floor(Math.random()*10000);
 
 // Working with multer diskStorage method
 const storage = multer.diskStorage({
-     destination: function(req, file, cb){
-         cb(null, 'uploads/');
-    },
      filename: function(req, file, cb){
          cb(null, name() + file.originalname);
-        //  console.log(file);
      }
  });
-//  const option = req.file ? storage : 'uploads/product_image.jpg';
 
 const fileFilter = (req, file, cb)=>{
     //reject a file
@@ -51,6 +46,7 @@ router.get('/', (req, res)=>{
                     price: product.pdt_price,
                     scheme: product.pdt_scheme,
                     image: product.pdt_image,
+                    imageId: product.public_id,
                     serial: product.serial_no,
                     payplan: product.pay_interval
                 }
@@ -71,6 +67,7 @@ router.get('/fitness', (req, res)=>{
                     price: product.pdt_price,
                     scheme: product.pdt_scheme,
                     image: product.pdt_image,
+                    imageId: product.public_id,
                     serial: product.serial_no,
                     payplan: product.pay_interval
                 }
@@ -91,6 +88,7 @@ router.get('/machinery', (req, res)=>{
                     price: product.pdt_price,
                     scheme: product.pdt_scheme,
                     image: product.pdt_image,
+                    imageId: product.public_id,
                     serial: product.serial_no,
                     payplan: product.pay_interval
                 }
@@ -111,6 +109,7 @@ router.get('/furniture', (req, res)=>{
                     price: product.pdt_price,
                     scheme: product.pdt_scheme,
                     image: product.pdt_image,
+                    imageId: product.public_id,
                     serial: product.serial_no,
                     payplan: product.pay_interval
                 }
@@ -131,6 +130,7 @@ router.get('/electronics', (req, res)=>{
                     price: product.pdt_price,
                     scheme: product.pdt_scheme,
                     image: product.pdt_image,
+                    imageId: product.public_id,
                     serial: product.serial_no,
                     payplan: product.pay_interval
                 }
@@ -171,6 +171,8 @@ router.get('/new', isAuthenticate, isAuthorized , (req, res)=>{
 
 //Creating new product done by admin, and editing
 router.post('/new', isAuthenticate, isAuthorized ,upload.single('pdt_image'), async (req, res)=>{
+    const result = await cloudinary.uploader.upload(req.file.path);
+    
     // End working on image
     const product = new Product();
     product.pdt_name = req.body.pdt_name;
@@ -182,8 +184,9 @@ router.post('/new', isAuthenticate, isAuthorized ,upload.single('pdt_image'), as
     product.pdt_price = req.body.pdt_price;
     product.pay_interval = req.body.pay_interval;
     product.pdt_stock = req.body.pdt_stock;
-    product.pdt_scheme = req.body.pdt_scheme
-    product.pdt_image = req.file.path;
+    product.pdt_scheme = req.body.pdt_scheme;
+    product.pdt_image = result.secure_url;
+    product.imageId = result.public_id;
     product.pdt_desc = req.body.pdt_desc;
 
     try {
@@ -283,18 +286,16 @@ router.post('/edit/:id', isAuthenticate, isAuthorized, (req, res)=>{
 //deleting a product, done by admin
 router.get('/delete/:id', isAuthenticate , isAuthorized ,async (req, res)=>{
     let query = req.params.id;
-    Product.findByIdAndRemove(query, (err, product)=>{
-        if(err){
-            console.log(err);
-        }else {
-            fs.unlink(product.pdt_image , function (err) {
-            if (err) throw err;
-            // if no error, show flash message and redirect to product list
-            req.flash('succces', "File deleted");
-            res.redirect('/product/list');
-            });  
-        }
-    })
+    try{
+        const ProductToDelete = await Product.findById(query);
+        await cloudinary.uploader.destroy({ where: { public_id: ProductToDelete.imageId }});
+        await Product.findByIdAndDelete(ProductToDelete.id);
+        req.flash('succces', "File deleted");
+        res.redirect('/product/list');
+    }catch(err){
+        res.status(500).send(err.message);
+    }
+    // Uganda11@
 })
 
 module.exports = router

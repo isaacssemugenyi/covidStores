@@ -1,11 +1,3 @@
-/** 
- * <input type="text" name="product" list="productName"/>
-<datalist id="productName">
-    <option value="Pen">Pen</option>
-    <option value="Pencil">Pencil</option>
-    <option value="Paper">Paper</option>
-</datalist>
-*/
 const mongoose = require('mongoose');
 const purchaseSchema = mongoose.Schema({
     cname: { type: String, reuired: true },
@@ -16,11 +8,11 @@ const purchaseSchema = mongoose.Schema({
     cnid: {type: String, required: true },
     citemName: {type: String, required: true },
     itemSerial: { type: String, required: true },
-    dateOfPay : {type: Date, default: new Date},//automatic
+    dateOfPay : {type: Date, default: new Date()},
     nextPayDate: { type: Date },
     nextPayAmt: {type: String},
     refereeNo: {type: String },
     crefNo: {type: String}
 })
-// purchaseReceipt:
+
 module.exports = mongoose.model('client_purchase', purchaseSchema)

@@ -6,7 +6,7 @@ const {body, validationResult} = require('express-validator');
 // const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
-const config = require('./config/db');
+require('dotenv').config();
 
 
 //instantiations
@@ -15,7 +15,7 @@ app.locals.moment = require('moment'); //Moment for date formating and global va
 app.set('view engine', 'pug'); //Using pug engine
 app.set('views', './views');
 
-mongoose.connect(config.database, { 
+mongoose.connect(process.env.CONNECTIONSTRING, { 
   useUnifiedTopology: true, 
   useNewUrlParser: true, 
   useCreateIndex: true,
@@ -29,18 +29,12 @@ const productRoutes = require('./routes/productRoutes')
 const staffRoutes = require('./routes/staffRoutes');
 // const { Mongoose } = require('mongoose');
 
-//configurations
-app.use('/uploads', express.static('uploads'));
-app.use('/product/uploads', express.static('uploads'));
-app.use('/product/view/uploads', express.static('uploads'));
-app.use('/product/views/uploads', express.static('uploads'));
-
 app.use(express.static(path.join(__dirname , 'public'))); //Using static files
 app.use(express.urlencoded({extended: true})) // Accessing form data
 
 // Express session middleware
 app.use(session({ 
-  secret: 'mostsecretwordeverseen', 
+  secret: process.env.SECRETKEY, 
   resave: true, 
   saveUninitialized: true
 }));

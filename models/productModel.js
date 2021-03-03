@@ -47,14 +47,13 @@ const productSchema = mongoose.Schema({
     pdt_image : {
       type: String
     },
+    imageId: {
+      type: String
+    },
     pdt_desc: {
       type: String
     }
 }, opts)
-
-// productSchema.path('serial_no').validate(val=>{
-
-// })
 
 productSchema.virtual('initial_pay').get(function() {
     return this.pdt_price / 2;

@@ -34,7 +34,7 @@ router.get('/list', isAuthenticate , isAuthorized , (req, res)=>{
 })
 
 // New staff members
-router.post('/new', isAuthenticate , isAuthorized , async(req, res)=>{
+router.post('/new', isAuthenticate , isAuthorized ,async(req, res)=>{
     const staff = new staffRegister();
     staff.fname = req.body.fname;
     staff.lname = req.body.lname;

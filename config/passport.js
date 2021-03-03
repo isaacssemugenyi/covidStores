@@ -1,6 +1,6 @@
 const LocalStrategy = require('passport-local').Strategy;
 const Staff = require('../models/staffModel');
-const config = require('../config/db');
+require('dotenv').config();
 const bcrypt = require('bcryptjs');
 
 module.exports = function(passport){
